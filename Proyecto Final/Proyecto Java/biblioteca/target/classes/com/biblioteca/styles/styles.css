@@ -1,0 +1,58 @@
+/* styles.css */
+
+.root {
+    -fx-background-color: #3f7bd4fb; /* Color de fondo */
+}
+
+.button {
+    -fx-background-color: #f8f8f8; /* Color de fondo del botón */
+    -fx-text-fill: rgb(0, 0, 0); /* Color del texto del botón */
+    -fx-font-size: 14px; /* Tamaño de fuente */
+    -fx-padding: 10px 20px; /* Relleno del botón */
+}
+
+
+.flat-button {
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-text-fill: #a5386e; /* Color del texto */
+    -fx-font-size: 14px; /* Tamaño de fuente */
+    -fx-padding: 10px 20px; /* Relleno del botón */
+    -fx-border-color: #080000; /* Color del borde */
+    -fx-border-width: 2px; /* Ancho del borde */
+    -fx-border-radius: 5px; /* Radio del borde */
+}
+
+.flat-button:hover {
+    -fx-background-color: #13db19; /* Cambio de color de fondo al pasar el mouse */
+}
+
+.flat-button.blue {
+    -fx-text-fill: #2196F3; /* Color de texto azul */
+    -fx-border-color: #2196F3; /* Color del borde azul */
+}
+
+.flat-button.green {
+    -fx-text-fill: #4CAF50; /* Color de texto verde */
+    -fx-border-color: #4CAF50; /* Color del borde verde */
+}
+
+.flat-button.orange {
+    -fx-text-fill: #FF9800; /* Color de texto naranja */
+    -fx-border-color: #FF9800; /* Color del borde naranja */
+}
+
+.flat-button.purple {
+    -fx-text-fill: #9C27B0; /* Color de texto morado */
+    -fx-border-color: #9C27B0; /* Color del borde morado */
+}
+
+.flat-button.red {
+    -fx-text-fill: #F44336; /* Color de texto rojo */
+    -fx-border-color: #F44336; /* Color del borde rojo */
+}
+
+.flat-button.gray {
+    -fx-text-fill: #9E9E9E; /* Color de texto gris */
+    -fx-border-color: #9E9E9E; /* Color del borde gris */
+}
+
