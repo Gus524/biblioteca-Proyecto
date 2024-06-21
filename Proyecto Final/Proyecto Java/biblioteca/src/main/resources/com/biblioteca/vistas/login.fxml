@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.LoginController">
+   <children>
+      <Pane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2F4F4F;">
+         <children>
+            <Label layoutX="124.0" layoutY="57.0" text="BiblioSys" textFill="WHITE">
+               <font>
+                  <Font name="Thonburi Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="193.0" fitWidth="194.0" layoutX="79.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/biblioteca-en-linea%20(1).png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="416.0" text="Optimiza tu Biblioteca, Inspira la Lectura" textFill="WHITE">
+               <font>
+                  <Font name="Thonburi Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="350.0" prefHeight="500.0" prefWidth="350.0">
+         <children>
+            <Label layoutX="86.0" layoutY="52.0" text="Inicio de Sesión" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Thonburi Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfUsuario" layoutX="71.0" layoutY="187.0" prefHeight="26.0" prefWidth="209.0">
+               <font>
+                  <Font name="Thonburi" size="13.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="tfPassword" layoutX="73.0" layoutY="287.0" prefHeight="26.0" prefWidth="209.0">
+               <font>
+                  <Font name="Thonburi" size="13.0" />
+               </font>
+            </PasswordField>
+            <Label layoutX="75.0" layoutY="158.0" text="Usuario" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Thonburi Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="258.0" text="Contraseña" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="Thonburi Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEntrar" layoutX="78.0" layoutY="390.0" onAction="#btnEntrar_click" mnemonicParsing="false" prefHeight="27.0" prefWidth="209.0" style="-fx-background-color: #FFA500; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
+               <font>
+                  <Font name="Thonburi Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

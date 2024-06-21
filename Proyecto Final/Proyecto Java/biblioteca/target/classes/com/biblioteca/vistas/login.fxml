@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.LoginController">
    <children>
       <Pane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2F4F4F;">
          <children>
@@ -58,7 +58,7 @@
                   <Font name="Thonburi Bold" size="13.0" />
                </font>
             </Label>
-            <Button fx:id="btnEntrar" layoutX="78.0" layoutY="390.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="209.0" style="-fx-background-color: #FFA500; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
+            <Button fx:id="btnEntrar" layoutX="78.0" layoutY="390.0" onAction="#btnEntrar_click" mnemonicParsing="false" prefHeight="27.0" prefWidth="209.0" style="-fx-background-color: #FFA500; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
                <font>
                   <Font name="Thonburi Bold" size="16.0" />
                </font>

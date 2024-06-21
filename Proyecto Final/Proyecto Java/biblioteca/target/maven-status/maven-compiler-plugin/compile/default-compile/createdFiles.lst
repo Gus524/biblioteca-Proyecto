@@ -7,10 +7,12 @@ com\biblioteca\modelos\Filtro.class
 com\biblioteca\modelos\Edicion.class
 com\biblioteca\controladores\MainController.class
 module-info.class
+com\biblioteca\controladores\LoginController.class
 com\biblioteca\controladores\LibrosController.class
 com\biblioteca\modelos\Multa.class
 com\biblioteca\controladores\PrestamosController.class
 com\biblioteca\controladores\ClientesController.class
+com\biblioteca\controladores\RegistroVentaController.class
 com\biblioteca\modelos\Prestamo.class
 com\biblioteca\controladores\HistorialPrestamos.class
 com\biblioteca\App.class

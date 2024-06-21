@@ -1,5 +1,10 @@
 -- Crear tablas
 
+CREATE TABLE Login (
+	user			TEXT NOT NULL,
+	pass			TEXT NOT NULL
+);
+
 CREATE TABLE Usuario (
     id_user         INTEGER PRIMARY KEY AUTOINCREMENT,
     nom_user        TEXT NOT NULL,
@@ -71,7 +76,7 @@ CREATE TABLE Prestamo (
 CREATE TABLE Prestamo_Concentrado (
     id_prestamo_user    INTEGER PRIMARY KEY AUTOINCREMENT,
     id_prestamo         INTEGER,
-    ISBN                NUMERIC(13) NOT NULL,
+    ISBN                INTEGER NOT NULL,
     id_estado           INTEGER,
     fecha_devolucion    TEXT NOT NULL,
     devolucion          TEXT,
@@ -90,7 +95,6 @@ CREATE TABLE Venta_Detalle (
     id_venta        INTEGER,
     ISBN            INTEGER NOT NULL,
     costo_parcial   REAL NOT NULL,
-    devuelto        INTEGER DEFAULT 0,
     FOREIGN KEY (id_venta) REFERENCES Venta(id_venta),
     FOREIGN KEY (ISBN) REFERENCES Edicion(ISBN)
 );

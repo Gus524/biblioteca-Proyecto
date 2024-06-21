@@ -1,4 +1,8 @@
 -- Insertar datos
+INSERT INTO Login (user, pass) VALUES
+('usuario', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'),
+('admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+
 INSERT INTO Usuario (nom_user, ap_user, direccion, tel_user) VALUES
 ('Juan', 'Perez', 'Calle Falsa 123', 1234567890),
 ('Maria', 'Lopez', 'Avenida Siempreviva 742', 2345678901),

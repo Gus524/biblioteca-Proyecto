@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
 
 <VBox prefHeight="444.0" prefWidth="540.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.MainController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Button styleClass="flat-button blue" mnemonicParsing="false" onAction="#btnBuscarLibros_click" text="Buscar libros" />
-      <Button styleClass="flat-button green" mnemonicParsing="false" onAction="#btnVender_click" text="Registrar Venta" />
-      <Button styleClass="flat-button orange" mnemonicParsing="false" onAction="#btnPrestamos_click" text="Registrar Prestamo" />
-      <Button styleClass="flat-button purple" mnemonicParsing="false" onAction="#btnHistorialPrestamos_click" text="Historial de prestamos" />
-      <Button styleClass="flat-button red" mnemonicParsing="false" onAction="#btnHistorialVentas_click" text="Historial de ventas" />
-      <Button styleClass="flat-button gray" mnemonicParsing="false" onAction="#btnVerClientes_click" text="Ver clientes" />
-      <Button text="Registrar Libro" />
-      <Button text="Historial Multas"/>
    </children>
 </VBox>

@@ -59,6 +59,22 @@ public class ConnectionDB {
         return lista;
     }
 
+    public int select(String sql, Object... params){
+        try (Connection conn = getConn()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return 1;           
+            }
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     public int ejecutar(String sql, Object... params) {
         try (Connection conn = getConn()) {
             PreparedStatement ps = conn.prepareStatement(sql);
