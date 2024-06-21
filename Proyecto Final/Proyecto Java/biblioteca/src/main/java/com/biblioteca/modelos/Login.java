@@ -20,7 +20,7 @@ public class Login {
 
     public Boolean comprobarUser() {
         System.out.println(Encriptar.encrypt(this.pass));
-        return (cnn.select("SELECT * FROM Login WHERE user = ? AND pass = ?",
+        return (cnn.comprobar("SELECT * FROM Login WHERE user = ? AND pass = ?",
                 this.user,
                 Encriptar.encrypt(this.pass)) > 0);
     }

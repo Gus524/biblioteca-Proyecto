@@ -9,7 +9,7 @@ CREATE TABLE Usuario (
     id_user         INTEGER PRIMARY KEY AUTOINCREMENT,
     nom_user        TEXT NOT NULL,
     ap_user         TEXT NOT NULL,
-    direccion       TEXT NOT NULL,
+    email		    TEXT NOT NULL,
     tel_user        NUMERIC (10)
 );
 

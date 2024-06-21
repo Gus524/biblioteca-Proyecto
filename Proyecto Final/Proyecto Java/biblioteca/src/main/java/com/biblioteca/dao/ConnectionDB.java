@@ -59,7 +59,7 @@ public class ConnectionDB {
         return lista;
     }
 
-    public int select(String sql, Object... params){
+    public int comprobar(String sql, Object... params){
         try (Connection conn = getConn()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             for (int i = 0; i < params.length; i++) {

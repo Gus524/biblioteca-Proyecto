@@ -55,6 +55,12 @@ public class Usuario implements ConvertirMapeo{
         return usuarios;
     }
 
+    public Boolean comprobarCorreo(){
+        return (cnn.comprobar("SELECT * FROM Usuario WHERE email = ? AND tel_user = ?",
+                this.correo.get(),
+                this.tel_user.get()) > 0);
+    }
+
     public List<Usuario> obtenerUsuarios(){
         return convertirMapeo(cnn.consultar("SELECT * FROM Usuario"));
     }

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.biblioteca.dao.ConnectionDB;
 import com.biblioteca.interfaces.ConvertirMapeo;
 
 import javafx.beans.property.DoubleProperty;
@@ -22,6 +23,8 @@ public class Multa implements ConvertirMapeo{
     private StringProperty estado;
     private DoubleProperty costo_multa;
     private StringProperty fecha_multa;
+    private IntegerProperty id_estado;
+    private ConnectionDB cnn;
 
     public StringProperty getFecha_multa() { return fecha_multa; }
     public IntegerProperty getId_multa() { return id_multa; }
@@ -30,8 +33,18 @@ public class Multa implements ConvertirMapeo{
     public IntegerProperty getTotal_multa() { return total_multa; }
     public StringProperty getEstado() { return estado; }
     public DoubleProperty getCosto_multa() { return costo_multa; }
+    public IntegerProperty getId_estado() { return id_estado; }
 
-    public Multa(Integer id_multa, Integer id_prestamo_user, Integer id_historial, Integer total_multa, String estado, Double costo_multa, String fecha_multa) {
+    public Multa() {
+        this.cnn = new ConnectionDB();
+    }   
+
+    public Multa(IntegerProperty id_multa){
+        this.cnn = new ConnectionDB();
+        this.id_multa = id_multa;
+    }
+    
+    public Multa(Integer id_multa, Integer id_prestamo_user, Integer id_historial, Integer total_multa, String estado, Double costo_multa, String fecha_multa, Integer id_estado) {
         this.id_multa = new SimpleIntegerProperty(id_multa);
         this.id_prestamo_user = new SimpleIntegerProperty(id_prestamo_user);
         this.id_historial = new SimpleIntegerProperty(id_historial);
@@ -39,6 +52,7 @@ public class Multa implements ConvertirMapeo{
         this.estado = new SimpleStringProperty(estado);
         this.costo_multa = new SimpleDoubleProperty(costo_multa);
         this.fecha_multa = new SimpleStringProperty(fecha_multa);
+        this.id_estado = new SimpleIntegerProperty(id_estado);
     }
 
     @SuppressWarnings("unchecked")
@@ -51,10 +65,42 @@ public class Multa implements ConvertirMapeo{
             (Integer) map.get("id_prestamo_user"),
             (Integer) map.get("id_historial"), (Integer) map.get("total_multa"),
             (String) map.get("estado"), (Double) map.get("costo_multa"),
-            (String) map.get("fecha_multa"));
+            (String) map.get("fecha_multa"),
+            (Integer) map.get("id_estado"));
             multas.add((T)multa);
         }
         return multas;
+    }
+
+    public Boolean agregarHistorial(int id_user){
+        return (cnn.ejecutar("INSERT INTO Multa_Historial" +
+                            "(id_user, total_multa)" + 
+                            "VALUES (?,?)", 
+                            id_user, 
+                            this.total_multa) > 0);
+    }
+
+    public Boolean agregarMulta(){
+       return (cnn.ejecutar("INSERT INTO Multa" + 
+                            "(id_prestamo_user, id_historial, id_estado, costo_multa, fecha_multa)" +
+                            "VALUES (?, ?, ?, ?, ?, ?)", 
+                            this.id_prestamo_user, 
+                            this.id_historial,
+                            this.id_estado,
+                            this.costo_multa,
+                            this.fecha_multa) > 0);
+    }
+
+    public Boolean actualizarCosto(){
+        return (cnn.ejecutar("UPDATE Multa SET costo_multa = ? WHERE id_multa = ?", 
+                            this.costo_multa, 
+                            this.id_multa) > 0);
+    }
+
+    public Boolean actualizarEstado(){
+        return (cnn.ejecutar("UPDATE Multa SET id_estado = ? WHERE id_multa = ?", 
+                            this.id_estado, 
+                            this.id_multa) > 0);
     }
 
 }

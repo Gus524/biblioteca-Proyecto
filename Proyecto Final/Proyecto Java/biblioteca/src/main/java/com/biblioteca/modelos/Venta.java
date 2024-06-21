@@ -24,7 +24,6 @@ public class Venta implements ConvertirMapeo{
     private LongProperty ISBN;
     private DoubleProperty costo_parcial;
     private IntegerProperty id_detalle;
-    private StringProperty razon_dev;
 
     public IntegerProperty id_userProperty() { return id_user; }
     public StringProperty fecha_ventaProperty() { return fecha_venta; }
@@ -33,13 +32,12 @@ public class Venta implements ConvertirMapeo{
     public LongProperty ISBNProperty() { return ISBN; }
     public DoubleProperty costo_parcialProperty() { return costo_parcial; }
     public IntegerProperty id_detalleProperty() { return id_detalle; }
-    public StringProperty razon_devProperty() { return razon_dev; }
 
     public Venta(){
         this.cnn = new ConnectionDB();
     }
 
-    public Venta(Integer id_user, String fecha_venta, Double costo_total, Integer id_venta, Long ISBN, Double costo_parcial, Integer id_detalle, String razon_dev){
+    public Venta(Integer id_user, String fecha_venta, Double costo_total, Integer id_venta, Long ISBN, Double costo_parcial, Integer id_detalle){
         this.id_user = new SimpleIntegerProperty(id_user);
         this.fecha_venta = new SimpleStringProperty(fecha_venta);
         this.costo_total = new SimpleDoubleProperty(costo_total);
@@ -47,7 +45,6 @@ public class Venta implements ConvertirMapeo{
         this.ISBN = new SimpleLongProperty(ISBN);
         this.costo_parcial = new SimpleDoubleProperty(costo_parcial);
         this.id_detalle = new SimpleIntegerProperty(id_detalle);
-        this.razon_dev = new SimpleStringProperty(razon_dev);
     }
 
     @SuppressWarnings("unchecked")
@@ -62,8 +59,7 @@ public class Venta implements ConvertirMapeo{
             (Integer) map.get("id_venta"),
             (Long) map.get("ISBN"),
             (Double) map.get("costo_parcial"),
-            (Integer) map.get("id_detalle"),
-            (String) map.get("razon_dev")
+            (Integer) map.get("id_detalle")
             );
             ventas.add((T)venta);
         }
