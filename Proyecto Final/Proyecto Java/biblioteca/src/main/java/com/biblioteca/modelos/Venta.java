@@ -71,4 +71,16 @@ public class Venta implements ConvertirMapeo{
                                             this.id_venta.get()));
     }
     
+    public Boolean agregarVenta(){
+        return (cnn.ejecutar("INSERT INTO Venta (costo_total) " +
+                    "VALUES (?)",
+                    this.costo_total) > 0);
+    }
+
+    public Boolean agregarDetalle(){
+        return (cnn.ejecutar("INSERT INTO Venta_Detalle " + 
+                            "(id_venta, ISBN, costo_parcial) " + 
+                            "VALUES (?, ?, ?)",
+                            this.id_venta, this.ISBN, this.costo_parcial) > 0);
+    }
 }
