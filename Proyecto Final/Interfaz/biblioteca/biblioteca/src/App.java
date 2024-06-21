@@ -19,10 +19,17 @@ public class App extends Application {
             primaryStage.setScene(scene);
             
             // Establecer el título del escenario
-            primaryStage.setTitle("Inicio de Sesión");
+            primaryStage.setTitle("BiblioSys");
             
             // Mostrar el escenario
             primaryStage.show();
+
+            // Centramos la ventana
+            primaryStage.setOnShowing(event -> {
+                primaryStage.centerOnScreen();
+            });
+
+        primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
