@@ -108,63 +108,63 @@ public class Edicion implements ConvertirMapeo {
 
     public Boolean agregarEdicion(){
         return (cnn.ejecutar("INSERT INTO Edicion "
-                           + "(no_edicion, id_libro, ISBN, publicacion, precio, disponibles) VALUES "
-                           + "(?, ?, ?, ?, ?, ?)", 
-                           this.no_edicion, 
-                           this.id_libro, 
-                           this.ISBN, 
-                           this.publicacion, 
-                           this.precio, 
-                           this.disponibles) > 0);
+                   + "(no_edicion, id_libro, ISBN, publicacion, precio, disponibles) VALUES "
+                   + "(?, ?, ?, ?, ?, ?)", 
+                   this.no_edicion.get(), 
+                   this.id_libro.get(), 
+                   this.ISBN.get(), 
+                   this.publicacion.get(), 
+                   this.precio.get(), 
+                   this.disponibles.get()) > 0);
     }
 
     public Boolean actualizarPublicacion(){
         return (cnn.ejecutar("UPDATE Edicion SET publicacion = ? WHERE ISBN = ?", 
-                            this.publicacion, 
-                            this.ISBN) > 0);
+                            this.publicacion.get(), 
+                            this.ISBN.get()) > 0);
     }
 
     public Boolean eliminarEdicion(){
         return (cnn.ejecutar("DELETE FROM Edicion WHERE ISBN = ?", 
-                            this.ISBN) > 0);
+                            this.ISBN.get()) > 0);
     }
 
     public Boolean editarNumero(){
         return (cnn.ejecutar("UPDATE Edicion SET no_edicion = ? WHERE ISBN = ?", 
-                            this.no_edicion, 
-                            this.ISBN) > 0);
+                            this.no_edicion.get(), 
+                            this.ISBN.get()) > 0);
     }
     
     public Boolean comoprobarLibro() {
         return (cnn.comprobar("SELECT * FROM Libro WHERE id_libro = ?", 
-                this.id_libro) > 0);
+                this.id_libro.get()) > 0);
     }
 
     public Boolean comprobarEdicion() {
         return (cnn.comprobar("SELECT * FROM Edicion WHERE ISBN = ?", 
-                this.ISBN) > 0);
+                this.ISBN.get()) > 0);
     }
 
     public Boolean actualizarPrecio(){
         return (cnn.ejecutar("UPDATE Edicion SET precio = ? WHERE ISBN = ?", 
-                this.precio, 
-                this.ISBN) > 0);
+                this.precio.get(), 
+                this.ISBN.get()) > 0);
     }
 
     public Boolean actualizarDisponibles() {
         return (cnn.ejecutar("UPDATE Edicion SET disponibles = ? WHERE ISBN = ?", 
-                this.disponibles, 
-                this.ISBN) > 0);
+                this.disponibles.get(), 
+                this.ISBN.get()) > 0);
     }
 
     public Boolean actualizarTitulo() {
         return (cnn.ejecutar("UPDATE Libro SET titulo = ? WHERE id_libro = ?", 
-                this.titulo,   
-                this.id_libro) > 0);
+                this.titulo.get(),   
+                this.id_libro.get()) > 0);
     }
 
     public Boolean actualizarPrecioEdicion() {
         return (cnn.ejecutar("UPDATE * FROM Edicion WHERE ISBN = ?", 
-                this.ISBN) > 0);
+                this.ISBN.get()) > 0);
     }
 }

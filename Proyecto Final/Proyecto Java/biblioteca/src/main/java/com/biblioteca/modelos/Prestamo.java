@@ -76,29 +76,29 @@ public class Prestamo implements ConvertirMapeo{
     public Boolean agregarPrestamo(){
         return (cnn.ejecutar("INSERT INTO Prestamo (id_user) "+
                     "VALUES (?)",
-                    this.id_user) > 0);
+                    this.id_user.get()) > 0);
     }
 
     public Boolean agregarConcentrado(){
         return (cnn.ejecutar("INSERT INTO Prestamo_Concentrado " + 
                     "(id_prestamo, ISBN, id_estado, fecha_devolucion, devolucion) "+
                     "VALUES (?, ?, ?, ?, ?)",
-                    this.id_prestamo,
-                    this.ISBN,
-                    this.id_estado,
-                    this.fecha_devolucion,
-                    this.devolucion) > 0);
+                    this.id_prestamo.get(),
+                    this.ISBN.get(),
+                    this.id_estado.get(),
+                    this.fecha_devolucion.get(),
+                    this.devolucion.get()) > 0);
     }
 
     public Boolean actualizarEstadoDevuelto(){
         return (cnn.ejecutar("UPDATE Prestamo_Concentrado SET id_estado = 4 AND devolucion = ? WHERE id_prestamo_user = ?", 
-                    this.id_estado, 
-                    this.id_prestamo_user) > 0);
+                    this.id_estado.get(), 
+                    this.id_prestamo_user.get()) > 0);
     
     }
 
     public List<Prestamo> obtenerPrestamo(){
         return convertirMapeo(cnn.consultar("SELECT * FROM Prestamo WHERE id_prestamo = ?", 
-                                            this.id_prestamo));
+                                            this.id_prestamo.get()));
     }
 }

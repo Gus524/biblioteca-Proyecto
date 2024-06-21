@@ -63,8 +63,10 @@ public class Multa implements ConvertirMapeo{
             Multa multa = new Multa(
             (Integer) map.get("id_multa"), 
             (Integer) map.get("id_prestamo_user"),
-            (Integer) map.get("id_historial"), (Integer) map.get("total_multa"),
-            (String) map.get("estado"), (Double) map.get("costo_multa"),
+            (Integer) map.get("id_historial"), 
+            (Integer) map.get("total_multa"),
+            (String) map.get("estado"), 
+            (Double) map.get("costo_multa"),
             (String) map.get("fecha_multa"),
             (Integer) map.get("id_estado"));
             multas.add((T)multa);
@@ -72,35 +74,54 @@ public class Multa implements ConvertirMapeo{
         return multas;
     }
 
+    public List<Multa> obtenerMultas(){
+        return convertirMapeo(cnn.consultar("SELECT * FROM Multa"));
+    }
+
+    public List<Multa> obtenerMulta(){
+        return convertirMapeo(cnn.consultar("SELECT * FROM Multa WHERE id_multa = ?", 
+                                            this.id_multa.get()));
+    }
+
+    public List<Multa> obtenerHistorial(){
+        return convertirMapeo(cnn.consultar("SELECT * FROM Multa_Historial WHERE id_historial = ?",
+                                            this.id_historial.get()));
+    }
+
+    public List<Multa> obtenerMultaUsuario(){
+        return convertirMapeo(cnn.consultar("SELECT * FROM Multa WHERE id_prestamo_user = ?",
+                                            this.id_prestamo_user.get()));
+    }
+
     public Boolean agregarHistorial(int id_user){
         return (cnn.ejecutar("INSERT INTO Multa_Historial" +
                             "(id_user, total_multa)" + 
                             "VALUES (?,?)", 
                             id_user, 
-                            this.total_multa) > 0);
+                            this.total_multa.get()) > 0);
     }
 
     public Boolean agregarMulta(){
        return (cnn.ejecutar("INSERT INTO Multa" + 
                             "(id_prestamo_user, id_historial, id_estado, costo_multa, fecha_multa)" +
                             "VALUES (?, ?, ?, ?, ?, ?)", 
-                            this.id_prestamo_user, 
-                            this.id_historial,
-                            this.id_estado,
-                            this.costo_multa,
-                            this.fecha_multa) > 0);
+                            this.id_prestamo_user.get(), 
+                            this.id_historial.get(),
+                            this.id_estado.get(),
+                            this.costo_multa.get(),
+                            this.fecha_multa.get()) > 0);
     }
 
     public Boolean actualizarCosto(){
         return (cnn.ejecutar("UPDATE Multa SET costo_multa = ? WHERE id_multa = ?", 
-                            this.costo_multa, 
-                            this.id_multa) > 0);
+                            this.costo_multa.get(), 
+                            this.id_multa.get()) > 0);
     }
 
     public Boolean actualizarEstado(){
         return (cnn.ejecutar("UPDATE Multa SET id_estado = ? WHERE id_multa = ?", 
-                            this.id_estado, 
-                            this.id_multa) > 0);
+                            this.id_estado.get(), 
+                            this.id_multa.get()) > 0);
     }
 
 }
