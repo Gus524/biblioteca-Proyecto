@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"));
-        String css = getClass().getResource("styles/styles.css").toExternalForm();
+        String css = getClass().getResource("styles/Style.css").toExternalForm();
         System.out.println("Loading CSS: " + css);
         scene.getStylesheets().add(css);
         stage.setScene(scene);

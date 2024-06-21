@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.biblioteca.controladores.LectoresUserController">
+      
+    <Label text="Contenido del Catálogo" />
+    
+    <!-- Aquí puedes agregar más elementos según la vista del catálogo -->
+    
+</VBox>
