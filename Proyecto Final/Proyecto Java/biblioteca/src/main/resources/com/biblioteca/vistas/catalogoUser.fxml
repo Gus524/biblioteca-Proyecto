@@ -17,132 +17,69 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.CatalogoUserController">
+<VBox prefHeight="65.0" prefWidth="200.0" BorderPane.alignment="CENTER" stylesheets="@Style.css"
+   xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.biblioteca.controladores.CatalogoUserController">
    <children>
-      <BorderPane fx:id="panel" layoutX="-17.0" prefHeight="810.0" prefWidth="1344.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-17.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <VBox prefHeight="810.0" prefWidth="250.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@Style.css">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" stylesheets="@Style.css">
+               <HBox.margin>
+                  <Insets bottom="20.0" right="30.0" top="20.0" />
+               </HBox.margin>
                <children>
-                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" text="BiblioSys" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi Bold" size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Separator prefWidth="200.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="iconBook" styleClass="icon active-icon" />
-                        <JFXButton fx:id="btnCatalogo" styleClass="sidebar-button active-button" text="Catálogo" textFill="ORANGE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="120.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="iconList" styleClass="icon" />
-                        <JFXButton fx:id="btnPrestamos" styleClass="sidebar-button" text="Préstamos" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="220.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="iconUser" styleClass="icon"/>
-                        <JFXButton fx:id="btnLectores" styleClass="sidebar-button" onAction="#cargarLectores" text="Lectores" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="200.0" prefWidth="200.0" />
-                  <Separator prefWidth="200.0" />
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="320.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="iconLock" styleClass="icon" />
-                        <JFXButton fx:id="btnCerrarSesion" styleClass="sidebar-button" text="Cerrar Sesión" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
+                  <TextField fx:id="tfBuscar" prefHeight="40.0" prefWidth="245.0"
+                     promptText="Escribe aquí" styleClass="transparent" stylesheets="@Style.css">
+                     <font>
+                        <Font name="Thonburi" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
-            </VBox>
-         </left>
-         <center>
-            <VBox prefHeight="65.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@Style.css">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" stylesheets="@Style.css">
-                           <HBox.margin>
-                              <Insets bottom="20.0" right="30.0" top="20.0" />
-                           </HBox.margin>
-                           <children>
-                              <TextField fx:id="tfBuscar" prefHeight="40.0" prefWidth="245.0" promptText="Escribe aquí" styleClass="transparent" stylesheets="@Style.css">
-                                 <font>
-                                    <Font name="Thonburi" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button fx:id="btnBuscar" maxHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="search-button" stylesheets="@Style.css" text="Buscar" textFill="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="15.0" right="15.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Thonburi Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <styleClass>
-                              <String fx:value="search-box" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <ComboBox fx:id="comboFiltro" prefHeight="20.0" prefWidth="150.0" promptText="Filtro" styleClass="comboBox" stylesheets="@Style.css">
-                                 <HBox.margin>
-                                    <Insets top="35.0" />
-                                 </HBox.margin>
-                              </ComboBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="718.0" prefWidth="1094.0">
-                     <children>
-                        <TableView prefHeight="639.0" prefWidth="1016.0" stylesheets="@Style.css">
-                          <columns>
-                            <TableColumn fx:id="colTitulo" prefWidth="424.35791015625" text="Título" />
-                            <TableColumn fx:id="colEdicion" prefWidth="100.64208984375" text="Edición" />
-                              <TableColumn fx:id="colAutores" prefWidth="179.34906005859375" text="Autor/es" />
-                              <TableColumn fx:id="colCategoria" prefWidth="192.01605224609375" text="Categoría" />
-                              <TableColumn fx:id="colDisponible" prefWidth="119.03631591796875" text="Disponible" />
-                          </columns>
-                           <HBox.margin>
-                              <Insets bottom="30.0" left="30.0" right="30.0" top="45.0" />
-                           </HBox.margin>
-                        </TableView>
-                     </children>
-                  </HBox>
+                  <ComboBox fx:id="cmbxAutor" prefHeight="20.0" prefWidth="150.0"
+                     promptText="Filtro" styleClass="comboBox" stylesheets="@Style.css">
+                     <HBox.margin>
+                        <Insets top="35.0" />
+                     </HBox.margin>
+                  </ComboBox>
                </children>
-            </VBox>
-         </center>
-      </BorderPane>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="cmbxCategoria" prefHeight="20.0" prefWidth="150.0"
+                     promptText="Filtro" styleClass="comboBox" stylesheets="@Style.css">
+                     <HBox.margin>
+                        <Insets top="35.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="718.0" prefWidth="1094.0">
+         <children>
+            <TableView fx:id="tbLibros" prefHeight="639.0" prefWidth="1016.0" stylesheets="@Style.css">
+               <columns>
+                  <TableColumn fx:id="colTitulo" prefWidth="424.35791015625" text="Título" />
+                  <TableColumn fx:id="colEdicion" prefWidth="100.64208984375" text="Edición" />
+                  <TableColumn fx:id="colAutores" prefWidth="179.34906005859375" text="Autor/es" />
+                  <TableColumn fx:id="colCategoria" prefWidth="192.01605224609375" text="Categoría" />
+                  <TableColumn fx:id="colDisponible" prefWidth="119.03631591796875" text="Disponible" />
+               </columns>
+               <HBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="45.0" />
+               </HBox.margin>
+            </TableView>
+         </children>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

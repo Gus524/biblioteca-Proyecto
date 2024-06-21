@@ -8,7 +8,6 @@ com\biblioteca\controladores\HistorialVentas.class
 com\biblioteca\modelos\Filtro.class
 com\biblioteca\modelos\Login.class
 com\biblioteca\modelos\Edicion.class
-com\biblioteca\controladores\MainController.class
 com\biblioteca\utilidades\ShowAlert.class
 module-info.class
 com\biblioteca\controladores\LoginController.class

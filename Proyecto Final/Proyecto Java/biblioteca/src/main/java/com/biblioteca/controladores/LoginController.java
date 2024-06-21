@@ -18,7 +18,7 @@ public class LoginController {
     private void btnEntrar_click() throws IOException{
         Login login = new Login(tfUsuario.getText(), tfPassword.getText());
         if(login.comprobarUser()){
-            App.setRoot("catalogoUser");
+            App.setRoot("mainUser");
         }
         else{
             ShowAlert.show("Error", "Usuario o contraseña incorrectos");

@@ -1,13 +1,19 @@
 package com.biblioteca.controladores;
 
-
 import java.io.IOException;
+import java.util.function.Predicate;
 
 import com.biblioteca.App;
+import com.biblioteca.modelos.Edicion;
+import com.biblioteca.modelos.Filtro;
 import com.jfoenix.controls.JFXButton;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,34 +23,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-
 public class CatalogoUserController {
-    @FXML
-    private JFXButton btnCatalogo;
-    @FXML
-    private JFXButton btnCerrarSesion;
-    @FXML
-    private JFXButton btnLectores;
-    @FXML
-    private JFXButton btnPrestamos;
     @FXML
     private Button btnBuscar;
     @FXML
-    private TableColumn<?, ?> colAutores;
+    private TableView<Edicion> tbLibros;
     @FXML
-    private TableColumn<?, ?> colCategoria;
+    private TableColumn<Edicion, String> colAutores;
     @FXML
-    private TableColumn<?, ?> colDisponible;
+    private TableColumn<Edicion, String> colCategoria;
     @FXML
-    private TableColumn<?, ?> colEdicion;
+    private TableColumn<Edicion, Integer> colDisponible;
     @FXML
-    private TableColumn<?, ?> colTitulo;
+    private TableColumn<Edicion, Integer> colEdicion;
     @FXML
-    private ComboBox<?> comboFiltro;
+    private TableColumn<Edicion, String> colTitulo;
+    @FXML
+    private ComboBox<String> cmbxAutor;
+    @FXML
+    private ComboBox<String> cmbxCategoria;
     @FXML
     private TextField tfBuscar;
     @FXML
@@ -52,46 +55,100 @@ public class CatalogoUserController {
     @FXML
     private Label iconList;
     @FXML
-    private Label iconUser;
-    @FXML
-    private Label iconLock;
-    @FXML
-    private BorderPane panel;
+    private ObservableList<Edicion> libros;
+
+    Filtro f = new Filtro();
 
     @FXML
     public void initialize() {
-        iconBook.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.BOOK, "1.8em"));
-        iconList.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.LIST, "1.8em"));
-        iconUser.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.USER, "1.8em"));
-        iconLock.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.LOCK, "1.8em"));
+        cargarTabla();
+        configurarColumnas();
+        configurarFiltros();
+        cargarComboBox();
     }
 
-    @FXML
-    private void cargarPrestamo(){
-
+    private void cargarTabla() {
+        Edicion e = new Edicion();
+        libros = FXCollections.observableArrayList(e.consultarLibros());
+        tbLibros.setItems(libros);
     }
 
-    @FXML
-    private void cargarLectores(){
-        cargarContenido("lectoresUser");
+    private void configurarColumnas() {
+        colTitulo.setCellValueFactory(new PropertyValueFactory<Edicion, String>("titulo"));
+        colEdicion.setCellValueFactory(new PropertyValueFactory<Edicion, Integer>("no_edicion"));
+        colDisponible.setCellValueFactory(new PropertyValueFactory<Edicion, Integer>("disponibles"));
+        colAutores.setCellValueFactory(new PropertyValueFactory<Edicion, String>("autores"));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<Edicion, String>("categorias"));
     }
 
-    @FXML  
-    private void cerrarSesion() throws IOException {
-        App.setRoot("login");
+    private void configurarFiltros() {
+        FilteredList<Edicion> filtro = new FilteredList<>(libros, b -> true);
+        tfBuscar.textProperty().addListener((observable, oldVal, newVal) -> {
+            filtro.setPredicate(libros -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+                String titulo = newVal.toLowerCase();
+
+                return libros.tituloProperty().getValue().toLowerCase().contains(titulo);
+            });
+        });
+        cmbxAutor.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) -> {
+            aplicarFiltro(filtro, edicion -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+                String[] autoresSeleccionados = newVal.trim().split(",");
+                String[] autoresLibro = edicion.autoresProperty().getValue().split(",");
+
+                for (String autorSeleccionado : autoresSeleccionados) {
+                    String autorSeleccionadoTrimmed = autorSeleccionado.trim().toLowerCase();
+                    for (String autorLibro : autoresLibro) {
+                        if (autorLibro.trim().equalsIgnoreCase(autorSeleccionadoTrimmed)) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            });
+        });
+
+        cmbxCategoria.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) -> {
+            aplicarFiltro(filtro, edicion -> {
+                if (newVal == null || newVal.isEmpty()) {
+                    return true;
+                }
+                String[] categoriasSeleccionadas = newVal.trim().split(",");
+                String[] categoriasLibro = edicion.categoriasProperty().getValue().split(",");
+
+                for (String categoriaSeleccionada : categoriasSeleccionadas) {
+                    String categoriaSeleccionadaTrimmed = categoriaSeleccionada.trim().toLowerCase();
+                    for (String categoriaLibro : categoriasLibro) {
+                        if (categoriaLibro.trim().equalsIgnoreCase(categoriaSeleccionadaTrimmed)) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            });
+        });
+        SortedList<Edicion> datos = new SortedList<>(filtro);
+        datos.comparatorProperty().bind(tbLibros.comparatorProperty());
+        tbLibros.setItems(datos);
     }
 
-    @FXML
-    private void cargarContenido(String fxml) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/" + fxml + ".fxml"));
-            Node node = loader.load();
-            // Reemplazar el contenido del centro del pane
-            panel.setCenter(node);
-            btnLectores.setStyle("icon active icon");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void aplicarFiltro(FilteredList<Edicion> filtro, Predicate<Edicion> predicate) {
+        filtro.setPredicate(libros -> {
+            if (predicate == null) {
+                return true;
+            }
+            return predicate.test(libros);
+        });
+    }
+
+    private void cargarComboBox() {
+        cmbxAutor.getItems().addAll(Filtro.listaAutor);
+        cmbxCategoria.getItems().addAll(Filtro.listaCategoria);
     }
 
 }
