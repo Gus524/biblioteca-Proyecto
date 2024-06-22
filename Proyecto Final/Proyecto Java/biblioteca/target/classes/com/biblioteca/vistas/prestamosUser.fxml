@@ -18,21 +18,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ComboBox?>
 
 
 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" stylesheets="@Style.css"
    xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.biblioteca.controladores.LectoresUserController">
+   fx:controller="com.biblioteca.controladores.PrestamosUserController">
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" stylesheets="@Style.css">
                <HBox.margin>
-                  <Insets bottom="20.0" right="30.0" top="30.0" />
+                  <Insets bottom="20.0" right="15.0" top="30.0" />
                </HBox.margin>
                <children>
                   <TextField fx:id="tfBuscar" prefHeight="40.0" prefWidth="245.0"
-                     styleClass="transparent" stylesheets="@Style.css">
+                     promptText="Titulo" styleClass="transparent" stylesheets="@Style.css">
                      <font>
                         <Font name="Thonburi" size="13.0" />
                      </font>
@@ -42,6 +43,28 @@
                   <String fx:value="search-box" />
                   <String fx:value="shadow" />
                </styleClass>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="cmbxEstado" prefHeight="20.0" prefWidth="150.0"
+                     promptText="Estado" styleClass="comboBox" stylesheets="@Style.css">
+                     <HBox.margin>
+                        <Insets top="35.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100" prefWidth="200">
+               <children>
+                  <Button fx:id="btnNuevo" onAction="#mostrarModal" mnemonicParsing="false"
+                     prefHeight="34.0"
+                     prefWidth="218.0" styleClass="search-button" stylesheets="@Style.css"
+                     text="Nuevo Préstamo" textFill="WHITE">
+                     <font>
+                        <Font name="Thonburi Bold" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
             </HBox>
          </children>
       </HBox>
@@ -59,12 +82,12 @@
                </rowConstraints>
                <children>
                   <TableView prefHeight="649.0" prefWidth="414.0" stylesheets="@Style.css"
-                     GridPane.rowIndex="1">
+                     GridPane.rowIndex="1" fx:id="tbPrestamos">
                      <columns>
-                        <TableColumn fx:id="colLibro" prefWidth="244.5401611328125" text="Libro" />
-                        <TableColumn fx:id="colLector" prefWidth="167.95989990234375" text="Lector" />
-                        <TableColumn fx:id="colFechaInicio" prefWidth="174.53884887695312"
-                           text="Fecha prestado" />
+                        <TableColumn fx:id="colTitulo" prefWidth="244.5401611328125" text="Titulo" />
+                        <TableColumn fx:id="colEmail" prefWidth="167.95989990234375" text="Correo" />
+                        <TableColumn fx:id="colFechaPrestamo" prefWidth="174.53884887695312"
+                           text="Fecha prestamo" />
                         <TableColumn fx:id="colFechaDev" prefWidth="182.59698486328125"
                            text="Fecha devolución" />
                         <TableColumn fx:id="colCantidad" prefWidth="103.00433349609375"

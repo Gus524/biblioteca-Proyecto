@@ -7,6 +7,7 @@ com\biblioteca\modelos\Usuario.class
 com\biblioteca\controladores\HistorialVentas.class
 com\biblioteca\modelos\Filtro.class
 com\biblioteca\modelos\Login.class
+com\biblioteca\controladores\ModalPrestamoController.class
 com\biblioteca\modelos\Edicion.class
 com\biblioteca\utilidades\ShowAlert.class
 module-info.class

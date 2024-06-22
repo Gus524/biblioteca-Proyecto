@@ -4,11 +4,11 @@ INSERT INTO Login (user, pass) VALUES
 ('admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 INSERT INTO Usuario (nom_user, ap_user, email, tel_user) VALUES
-('Juan', 'Perez', 'Calle Falsa 123', 1234567890),
-('Maria', 'Lopez', 'Avenida Siempreviva 742', 2345678901),
-('Pedro', 'Gomez', 'Boulevard de los Sueños 500', 3456789012),
-('Ana', 'Martinez', 'Calle Luna 45', 4567890123),
-('Luis', 'Torres', 'Avenida Sol 678', 5678901234);
+('Juan', 'Perez', 'juanperes@gmail.com', 1234567890),
+('Maria', 'Lopez', 'mari_lopez@hotmail.com', 2345678901),
+('Pedro', 'Gomez', 'pedrop@gmail.com', 3456789012),
+('Ana', 'Martinez', 'anmart@gmail.com', 4567890123),
+('Luis', 'Torres', 'luist@gmail.com', 5678901234);
 
 INSERT INTO Editorial (nom_editorial) VALUES
 ('Editorial Alfa'),
@@ -66,9 +66,8 @@ INSERT INTO Libro_Autor (id_libro, id_autor) VALUES
 
 INSERT INTO Estado (desc_estado) VALUES
 ('Prestado'),
-('Disponible'),
-('Reservado'),
-('Devuelto');
+('Devuelto'),
+('Atrasado');
 
 INSERT INTO Prestamo (id_user, fecha_prestamo) VALUES
 (1, '2023-01-01'),
@@ -78,15 +77,15 @@ INSERT INTO Prestamo (id_user, fecha_prestamo) VALUES
 (5, '2023-05-01'),
 (1, '2023-06-01');
 
-INSERT INTO Prestamo_Concentrado (id_prestamo, ISBN, id_estado, fecha_devolucion, devolucion) VALUES
-(1, 1234567890123, 1, '2023-02-01', NULL),
-(2, 1234567890124, 1, '2023-03-01', NULL),
-(3, 2345678901234, 1, '2023-04-01', NULL),
-(4, 3456789012345, 1, '2023-05-01', NULL),
-(5, 4567890123456, 1, '2023-06-01', NULL),
-(6, 1234567890124, 1, '2023-07-01', NULL),
-(1, 1234567890124, 1, '2023-02-15', NULL),
-(2, 2345678901234, 1, '2023-03-15', NULL);
+INSERT INTO Prestamo_Concentrado (id_prestamo, ISBN, id_estado, fecha_devolucion, cantidad) VALUES
+(1, 1234567890123, 1, '2023-02-01', 1),
+(2, 1234567890124, 1, '2023-03-01', 2),
+(3, 2345678901234, 1, '2023-04-01', 1),
+(4, 3456789012345, 1, '2023-05-01', 1),
+(5, 4567890123456, 1, '2023-06-01', 1),
+(6, 1234567890124, 1, '2023-07-01', 2),
+(1, 1234567890124, 1, '2023-02-15', 1),
+(2, 2345678901234, 1, '2023-03-15', 1);
 
 INSERT INTO Venta (costo_total) VALUES
 (59.99),

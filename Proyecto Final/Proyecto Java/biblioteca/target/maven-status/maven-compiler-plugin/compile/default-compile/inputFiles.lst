@@ -1,4 +1,5 @@
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\RegistroVentaController.java
+c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\PrestamoUsuario.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\ClientesController.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\RegistroClienteController.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\PrestamosController.java
@@ -11,6 +12,7 @@ c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Pro
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\interfaces\ConvertirMapeo.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Filtro.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\LectoresUserController.java
+c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\PrestamosUserController.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Venta.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\MainUserController.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\VenderController.java
@@ -19,6 +21,7 @@ c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Pro
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Multa.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Edicion.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\HistorialPrestamos.java
+c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\controladores\ModalPrestamoController.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Usuario.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Login.java
 c:\Users\egusg\OneDrive\Documentos\GitHub\biblioteca-Proyecto\Proyecto Final\Proyecto Java\biblioteca\src\main\java\com\biblioteca\modelos\Prestamo.java

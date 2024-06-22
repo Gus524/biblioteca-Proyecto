@@ -15,23 +15,22 @@ import javafx.beans.property.StringProperty;
 public class Filtro implements ConvertirMapeo{
     private StringProperty autores;
     private StringProperty categorias;
-    private StringProperty editoriales;
     private ConnectionDB cnn;
+    public static List<String> listaEstado;
     public static List<String> listaAutor;
     public static List<String> listaCategoria;
     static {
         listaAutor = new ArrayList<>();
         listaCategoria = new ArrayList<>();
+        listaEstado = new ArrayList<>();
     }
 
     public StringProperty getAutores() { return autores; }
     public StringProperty getCategorias() { return categorias; }
-    public StringProperty getEditoriales() { return editoriales; }
 
-    public Filtro (String autores, String categorias, String editoriales) {
+    public Filtro (String autores, String categorias) {
         this.autores = new SimpleStringProperty(autores);
         this.categorias = new SimpleStringProperty(categorias);
-        this.editoriales = new SimpleStringProperty(editoriales);
     }
 
     public Filtro() {
@@ -46,8 +45,7 @@ public class Filtro implements ConvertirMapeo{
         for(var map : lista) {
             Filtro filtro = new Filtro(
             (String) map.get("autores"), 
-            (String) map.get("categorias"), 
-            (String) map.get("editoriales"));
+            (String) map.get("categorias"));
             filtros.add((T)filtro);
         }
         return filtros;
@@ -68,9 +66,7 @@ public class Filtro implements ConvertirMapeo{
                         "(SELECT GROUP_CONCAT(descripcion, ', ') FROM " +
                         "(SELECT DISTINCT descripcion FROM Categoria)) AS categorias, " +
                         "(SELECT GROUP_CONCAT(nom_autor, ', ') FROM " +
-                        "(SELECT DISTINCT nom_autor FROM Autor)) AS autores, " +
-                        "(SELECT GROUP_CONCAT(nom_editorial, ', ') FROM " +
-                        "(SELECT DISTINCT nom_editorial FROM Editorial)) AS editoriales"));
+                        "(SELECT DISTINCT nom_autor FROM Autor)) AS autores" ));
         obtenerListas(filtros);
     }
 }

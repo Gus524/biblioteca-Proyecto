@@ -80,6 +80,7 @@ CREATE TABLE Prestamo_Concentrado (
     id_estado           INTEGER,
     fecha_devolucion    TEXT NOT NULL,
     devolucion          TEXT,
+	cantidad			INT,
     FOREIGN KEY (id_prestamo) REFERENCES Prestamo(id_prestamo),
     FOREIGN KEY (ISBN) REFERENCES Edicion(ISBN),
     FOREIGN KEY (id_estado) REFERENCES Estado(id_estado)

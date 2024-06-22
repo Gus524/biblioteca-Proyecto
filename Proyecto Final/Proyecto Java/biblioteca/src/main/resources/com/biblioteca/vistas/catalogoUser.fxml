@@ -69,11 +69,11 @@
          <children>
             <TableView fx:id="tbLibros" prefHeight="639.0" prefWidth="1016.0" stylesheets="@Style.css">
                <columns>
-                  <TableColumn fx:id="colTitulo" prefWidth="424.35791015625" text="Título" />
+                  <TableColumn fx:id="colTitulo" prefWidth="300" text="Título" />
                   <TableColumn fx:id="colEdicion" prefWidth="100.64208984375" text="Edición" />
                   <TableColumn fx:id="colAutores" prefWidth="179.34906005859375" text="Autor/es" />
                   <TableColumn fx:id="colCategoria" prefWidth="192.01605224609375" text="Categoría" />
-                  <TableColumn fx:id="colDisponible" prefWidth="119.03631591796875" text="Disponible" />
+                  <TableColumn fx:id="colDisponible" prefWidth="100" text="Disponible" />
                </columns>
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="45.0" />
