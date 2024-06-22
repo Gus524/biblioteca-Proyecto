@@ -49,5 +49,21 @@ public class CatalogoUserController {
     @FXML
     private TextField tfBuscar;
 
+    @FXML
+    public void initialize() {
+        btnPrestamos.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("PrestamosUser.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) btnPrestamos.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
 }
+
