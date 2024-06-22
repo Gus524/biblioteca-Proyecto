@@ -40,7 +40,7 @@
                      <children>
                         <FontAwesomeIcon fill="ORANGE" glyphName="BOOK" size="1.8EM" styleClass="icon active-icon" text="" />
                         <JFXButton fx:id="btnCatalogo" styleClass="sidebar-button active-button" text="Catálogo" textFill="ORANGE">
-                           <font>
+                           <font>   
                               <Font name="Thonburi" size="18.0" />
                            </font>
                         </JFXButton>
@@ -146,3 +146,4 @@
       </BorderPane>
    </children>
 </AnchorPane>
+
