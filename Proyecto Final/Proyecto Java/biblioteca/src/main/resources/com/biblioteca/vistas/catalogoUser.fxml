@@ -29,7 +29,7 @@
                </HBox.margin>
                <children>
                   <TextField fx:id="tfBuscar" prefHeight="40.0" prefWidth="245.0"
-                     promptText="Escribe aquí" styleClass="transparent" stylesheets="@Style.css">
+                     promptText="Titulo" styleClass="transparent" stylesheets="@Style.css">
                      <font>
                         <Font name="Thonburi" size="18.0" />
                      </font>
@@ -46,7 +46,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ComboBox fx:id="cmbxAutor" prefHeight="20.0" prefWidth="150.0"
-                     promptText="Filtro" styleClass="comboBox" stylesheets="@Style.css">
+                     promptText="Autores" styleClass="comboBox" stylesheets="@Style.css">
                      <HBox.margin>
                         <Insets top="35.0" />
                      </HBox.margin>
@@ -56,7 +56,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ComboBox fx:id="cmbxCategoria" prefHeight="20.0" prefWidth="150.0"
-                     promptText="Filtro" styleClass="comboBox" stylesheets="@Style.css">
+                     promptText="Categorias" styleClass="comboBox" stylesheets="@Style.css">
                      <HBox.margin>
                         <Insets top="35.0" />
                      </HBox.margin>

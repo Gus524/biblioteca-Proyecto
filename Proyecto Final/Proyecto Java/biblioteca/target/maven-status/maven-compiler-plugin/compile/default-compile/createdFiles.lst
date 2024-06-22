@@ -10,11 +10,13 @@ com\biblioteca\modelos\Login.class
 com\biblioteca\modelos\Edicion.class
 com\biblioteca\utilidades\ShowAlert.class
 module-info.class
+com\biblioteca\controladores\LectoresUserController.class
 com\biblioteca\controladores\LoginController.class
 com\biblioteca\controladores\LibrosController.class
 com\biblioteca\modelos\Multa.class
 com\biblioteca\controladores\PrestamosController.class
 com\biblioteca\controladores\ClientesController.class
+com\biblioteca\controladores\MainUserController.class
 com\biblioteca\controladores\RegistroVentaController.class
 com\biblioteca\modelos\Prestamo.class
 com\biblioteca\controladores\HistorialPrestamos.class
