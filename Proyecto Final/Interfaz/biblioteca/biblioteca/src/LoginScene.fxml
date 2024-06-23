@@ -103,7 +103,7 @@
                      <Insets left="30.0" right="30.0" />
                   </GridPane.margin>
                </HBox>
-               <TextField styleClass="transparent" stylesheets="@Style.css" GridPane.rowIndex="3">
+               <TextField fx:id="tfUsuario" styleClass="transparent" stylesheets="@Style.css" GridPane.rowIndex="3">
                   <GridPane.margin>
                      <Insets left="30.0" right="30.0" />
                   </GridPane.margin>
@@ -113,7 +113,7 @@
                </TextField>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
                   <children>
-                     <JFXButton onAction="#handleButtonAction" prefWidth="290.0" stylesheets="@Style.css" text="Entrar" textFill="WHITE">
+                     <JFXButton onAction="#btnEntrar_click" prefWidth="290.0" stylesheets="@Style.css" text="Entrar" textFill="WHITE">
                         <font>
                            <Font name="Thonburi Bold" size="16.0" />
                         </font>
@@ -140,7 +140,7 @@
                            <Insets left="30.0" right="30.0" />
                         </HBox.margin>
                         <children>
-                           <PasswordField prefHeight="26.0" prefWidth="287.0" styleClass="transparent" stylesheets="@Style.css" />
+                           <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="287.0" styleClass="transparent" stylesheets="@Style.css" />
                         </children>
                      </HBox>
                   </children>
@@ -150,4 +150,3 @@
       </VBox>
    </HBox>
 </VBox>
-

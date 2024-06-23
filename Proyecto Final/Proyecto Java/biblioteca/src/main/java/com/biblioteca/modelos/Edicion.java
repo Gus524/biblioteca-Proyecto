@@ -56,6 +56,11 @@ public class Edicion implements ConvertirMapeo {
         this.autores = new SimpleStringProperty(autores);
         this.categorias = new SimpleStringProperty(categorias);
     }
+
+    @Override
+    public String toString(){
+        return titulo.getValue() + " " + no_edicion.getValue() + "e" + " (" + disponiblesProperty().getValue() + ")";
+    }
     
     @SuppressWarnings("unchecked")
     @Override

@@ -90,8 +90,6 @@
                            text="Fecha prestamo" />
                         <TableColumn fx:id="colFechaDev" prefWidth="182.59698486328125"
                            text="Fecha devolución" />
-                        <TableColumn fx:id="colCantidad" prefWidth="103.00433349609375"
-                           text="Cantidad" />
                         <TableColumn fx:id="colEstado" prefWidth="106.79095458984375" text="Estado" />
                      </columns>
                   </TableView>

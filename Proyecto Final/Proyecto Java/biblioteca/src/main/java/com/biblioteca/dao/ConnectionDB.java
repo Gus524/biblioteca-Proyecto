@@ -59,6 +59,19 @@ public class ConnectionDB {
         return lista;
     }
 
+    public int getKey(String sql, Object... params) {
+        try (Connection conn = getConn()) {
+            PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(+1, params[i]);
+            }
+            return (ps.executeUpdate() > 0) ? ps.getGeneratedKeys().getInt(1) : 0;
+        } catch (SQLException e) {
+            e.getStackTrace();
+            return 0;
+        }
+    }
+
     public int comprobar(String sql, Object... params){
         try (Connection conn = getConn()) {
             PreparedStatement ps = conn.prepareStatement(sql);

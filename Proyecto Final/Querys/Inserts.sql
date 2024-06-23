@@ -3,12 +3,12 @@ INSERT INTO Login (user, pass) VALUES
 ('usuario', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'),
 ('admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
-INSERT INTO Usuario (nom_user, ap_user, email, tel_user) VALUES
-('Juan', 'Perez', 'juanperes@gmail.com', 1234567890),
-('Maria', 'Lopez', 'mari_lopez@hotmail.com', 2345678901),
-('Pedro', 'Gomez', 'pedrop@gmail.com', 3456789012),
-('Ana', 'Martinez', 'anmart@gmail.com', 4567890123),
-('Luis', 'Torres', 'luist@gmail.com', 5678901234);
+INSERT INTO Usuario (nom_user, ap_user, email) VALUES
+('Juan', 'Perez', 'juanperes@gmail.com'),
+('Maria', 'Lopez', 'mari_lopez@hotmail.com'),
+('Pedro', 'Gomez', 'pedrop@gmail.com'),
+('Ana', 'Martinez', 'anmart@gmail.com'),
+('Luis', 'Torres', 'luist@gmail.com');
 
 INSERT INTO Editorial (nom_editorial) VALUES
 ('Editorial Alfa'),
@@ -77,15 +77,15 @@ INSERT INTO Prestamo (id_user, fecha_prestamo) VALUES
 (5, '2023-05-01'),
 (1, '2023-06-01');
 
-INSERT INTO Prestamo_Concentrado (id_prestamo, ISBN, id_estado, fecha_devolucion, cantidad) VALUES
-(1, 1234567890123, 1, '2023-02-01', 1),
-(2, 1234567890124, 1, '2023-03-01', 2),
-(3, 2345678901234, 1, '2023-04-01', 1),
-(4, 3456789012345, 1, '2023-05-01', 1),
-(5, 4567890123456, 1, '2023-06-01', 1),
-(6, 1234567890124, 1, '2023-07-01', 2),
-(1, 1234567890124, 1, '2023-02-15', 1),
-(2, 2345678901234, 1, '2023-03-15', 1);
+INSERT INTO Prestamo_Concentrado (id_prestamo, ISBN, id_estado, fecha_devolucion) VALUES
+(1, 1234567890123, 1, '2023-02-01'),
+(2, 1234567890124, 1, '2023-03-01'),
+(3, 2345678901234, 1, '2023-04-01'),
+(4, 3456789012345, 1, '2023-05-01'),
+(5, 4567890123456, 1, '2023-06-01'),
+(6, 1234567890124, 1, '2023-07-01'),
+(1, 1234567890124, 1, '2023-02-15'),
+(2, 2345678901234, 1, '2023-03-15');
 
 INSERT INTO Venta (costo_total) VALUES
 (59.99),

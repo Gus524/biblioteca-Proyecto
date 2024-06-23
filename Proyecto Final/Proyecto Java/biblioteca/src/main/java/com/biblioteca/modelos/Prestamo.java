@@ -36,7 +36,51 @@ public class Prestamo implements ConvertirMapeo{
     public IntegerProperty id_estadoProperty() { return id_estado; }
     public IntegerProperty id_prestamo_userProperty() { return id_prestamo_user; }
 
-    public Prestamo(){
+    //Agregar Get, Set y ACTUALIZAR EL CONSTRUCTOR POR DEFECTO de todas las variables en todas las clases
+    public int getId_prestamo() { return id_prestamo.get(); }
+    public int getId_user() { return id_user.get(); }
+    public String getFecha_prestamo() { return fecha_prestamo.get(); }
+    public Long getISBN() { return ISBN.get(); }
+    public String getEstado() { return estado.get(); }
+    public String getFecha_devolucion() { return fecha_devolucion.get(); }
+    public int getId_estado() { return id_estado.get(); }
+    public int getId_prestamo_user() { return id_prestamo_user.get(); }
+
+    public void setId_prestamo(int id_prestamo){
+        this.id_prestamo.set(id_prestamo);
+    }
+    public void setId_user(int id_user){
+        this.id_user.set(id_user);
+    }
+    public void setFecha_prestamo(String fecha_prestamo){
+        this.fecha_prestamo.set(fecha_prestamo);
+    }
+    public void setISBN(Long ISBN){
+        this.ISBN.set(ISBN);
+    }
+    public void setEstado(String estado){
+        this.estado.set(estado);
+    }
+    public void setFecha_devolucion(String fecha_devolucion){
+        this.fecha_devolucion.set(fecha_devolucion);
+    }
+    public void setId_estado(int id_estado){
+        this.id_estado.set(id_estado);
+    }
+    public void setId_prestamo_user(int id_prestamo_user){
+        this.id_prestamo_user.set(id_prestamo_user);
+    }
+    //ESTE ES CONSTRUCTOR POR DEFECTO, el que solo tiene ()
+    public Prestamo() {
+        this.id_prestamo_user = new SimpleIntegerProperty(0);
+        this.id_prestamo = new SimpleIntegerProperty(0);
+        this.id_user = new SimpleIntegerProperty(0);
+        this.fecha_prestamo = new SimpleStringProperty("");
+        this.ISBN = new SimpleLongProperty(0);
+        this.estado = new SimpleStringProperty("");
+        this.fecha_devolucion = new SimpleStringProperty("");
+        this.devolucion = new SimpleStringProperty("");
+        this.id_estado = new SimpleIntegerProperty(0);
         this.cnn = new ConnectionDB();
     }
 
@@ -73,32 +117,30 @@ public class Prestamo implements ConvertirMapeo{
         return prestamos;
     }
     
-    public Boolean agregarPrestamo(){
-        return (cnn.ejecutar("INSERT INTO Prestamo (id_user) "+
+    public int agregarPrestamo(){
+        return cnn.getKey("INSERT INTO Prestamo (id_user) "+
                     "VALUES (?)",
-                    this.id_user.get()) > 0);
+                    getId_user());
     }
 
     public Boolean agregarConcentrado(){
         return (cnn.ejecutar("INSERT INTO Prestamo_Concentrado " + 
-                    "(id_prestamo, ISBN, id_estado, fecha_devolucion, devolucion) "+
-                    "VALUES (?, ?, ?, ?, ?)",
-                    this.id_prestamo.get(),
-                    this.ISBN.get(),
-                    this.id_estado.get(),
-                    this.fecha_devolucion.get(),
-                    this.devolucion.get()) > 0);
+                    "(id_prestamo, ISBN, fecha_devolucion) "+
+                    "VALUES (?, ?, ?)",
+                    getId_prestamo(),
+                    getISBN(),
+                    getFecha_devolucion()) > 0);
     }
 
     public Boolean actualizarEstadoDevuelto(){
         return (cnn.ejecutar("UPDATE Prestamo_Concentrado SET id_estado = 4 AND devolucion = ? WHERE id_prestamo_user = ?", 
-                    this.id_estado.get(), 
-                    this.id_prestamo_user.get()) > 0);
+                    getFecha_devolucion(), 
+                    getId_prestamo_user()) > 0);
     
     }
 
     public List<Prestamo> obtenerPrestamo(){
         return convertirMapeo(cnn.consultar("SELECT * FROM Prestamo WHERE id_prestamo = ?", 
-                                            this.id_prestamo.get()));
+                                            getId_prestamo()));
     }
 }

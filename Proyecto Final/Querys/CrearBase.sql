@@ -9,8 +9,7 @@ CREATE TABLE Usuario (
     id_user         INTEGER PRIMARY KEY AUTOINCREMENT,
     nom_user        TEXT NOT NULL,
     ap_user         TEXT NOT NULL,
-    email		    TEXT NOT NULL,
-    tel_user        NUMERIC (10)
+    email		    TEXT NOT NULL
 );
 
 CREATE TABLE Editorial (
@@ -69,7 +68,7 @@ CREATE TABLE Estado (
 CREATE TABLE Prestamo (
     id_prestamo     INTEGER PRIMARY KEY AUTOINCREMENT,
     id_user         INTEGER,
-    fecha_prestamo  TEXT NOT NULL,
+    fecha_prestamo  TEXT DEFAULT (date('now')),
     FOREIGN KEY (id_user) REFERENCES Usuario(id_user)
 );
 
@@ -77,10 +76,9 @@ CREATE TABLE Prestamo_Concentrado (
     id_prestamo_user    INTEGER PRIMARY KEY AUTOINCREMENT,
     id_prestamo         INTEGER,
     ISBN                INTEGER NOT NULL,
-    id_estado           INTEGER,
+    id_estado           INTEGER DEFAULT 1,
     fecha_devolucion    TEXT NOT NULL,
     devolucion          TEXT,
-	cantidad			INT,
     FOREIGN KEY (id_prestamo) REFERENCES Prestamo(id_prestamo),
     FOREIGN KEY (ISBN) REFERENCES Edicion(ISBN),
     FOREIGN KEY (id_estado) REFERENCES Estado(id_estado)

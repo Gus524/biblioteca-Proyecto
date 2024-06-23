@@ -21,7 +21,6 @@ public class PrestamoUsuario implements ConvertirMapeo {
     private StringProperty fecha_prestamo;
     private StringProperty fecha_devolucion;
     private IntegerProperty id_prestamo_user;
-    private IntegerProperty cantidad;
     private ConnectionDB cnn;
 
     public IntegerProperty id_prestamoProperty() { return id_prestamo; }
@@ -32,13 +31,12 @@ public class PrestamoUsuario implements ConvertirMapeo {
     public StringProperty fecha_prestamoProperty() { return fecha_prestamo; }
     public StringProperty fecha_devolucionProperty() { return fecha_devolucion; }
     public IntegerProperty id_prestamo_userProperty() { return id_prestamo_user; }
-    public IntegerProperty cantidadProperty() { return cantidad; }
     
 
     public PrestamoUsuario(){
         this.cnn = new ConnectionDB();
     }
-    public PrestamoUsuario(Integer id_prestamo, Integer id_user, String email, String titulo, String estado, String fecha_prestamo, String fecha_devolucion, Integer id_prestamo_user, Integer cantidad){
+    public PrestamoUsuario(Integer id_prestamo, Integer id_user, String email, String titulo, String estado, String fecha_prestamo, String fecha_devolucion, Integer id_prestamo_user){
         this.id_prestamo = new SimpleIntegerProperty(id_prestamo);
         this.id_user = new SimpleIntegerProperty(id_user);
         this.email = new SimpleStringProperty(email);
@@ -47,7 +45,6 @@ public class PrestamoUsuario implements ConvertirMapeo {
         this.fecha_prestamo = new SimpleStringProperty(fecha_prestamo);
         this.fecha_devolucion = new SimpleStringProperty(fecha_devolucion);
         this.id_prestamo_user = new SimpleIntegerProperty(id_prestamo_user);
-        this.cantidad = new SimpleIntegerProperty(cantidad);
     }
 
     @SuppressWarnings("unchecked")
@@ -63,15 +60,14 @@ public class PrestamoUsuario implements ConvertirMapeo {
                 (String) map.get("desc_estado"),
                 (String) map.get("fecha_prestamo"),
                 (String) map.get("fecha_devolucion"),
-                (Integer) map.get("id_prestamo_user"),
-                (Integer) map.get("cantidad")
+                (Integer) map.get("id_prestamo_user")
             );
             prestamos.add((T)prestamo);
         }
         return prestamos;
     }
     public List<PrestamoUsuario> obtenerPrestamos(){
-        return convertirMapeo(cnn.consultar("SELECT p.id_prestamo, p.id_user, u.email, l.titulo, es.desc_estado, p.fecha_prestamo, pc.fecha_devolucion, pc.id_prestamo_user, pc.cantidad " +
+        return convertirMapeo(cnn.consultar("SELECT p.id_prestamo, p.id_user, u.email, l.titulo, es.desc_estado, p.fecha_prestamo, pc.fecha_devolucion, pc.id_prestamo_user " +
                                             "FROM Usuario u JOIN Prestamo p ON u.id_user = p.id_user " + 
                                             "JOIN Prestamo_Concentrado pc ON pc.id_prestamo = p.id_prestamo " +
                                             "JOIN Edicion e ON e.ISBN = pc.ISBN " +

@@ -7,11 +7,13 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import java.io.IOException;
 
+import com.biblioteca.modelos.Estado;
 import com.biblioteca.modelos.PrestamoUsuario;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,11 +35,11 @@ public class PrestamosUserController {
     @FXML
     private TableColumn<PrestamoUsuario, String> colFechaPrestamo;
     @FXML
-    private TableColumn<PrestamoUsuario, Integer> colCantidad;
-    @FXML
     private TableColumn<PrestamoUsuario, Integer> colEstado;
     @FXML
     private TextField tfBuscar;
+    @FXML
+    private ComboBox<String> cmbxEstado;
     @FXML
     private ObservableList<PrestamoUsuario> prestamos;
 
@@ -46,6 +48,7 @@ public class PrestamosUserController {
         cargarTabla();
         configurarColumnas();
         configurarFiltros();
+        cargarComboBox();
     }
 
     private void cargarTabla(){
@@ -59,7 +62,6 @@ public class PrestamosUserController {
         colEmail.setCellValueFactory(new PropertyValueFactory<PrestamoUsuario, String>("email"));
         colFechaDev.setCellValueFactory(new PropertyValueFactory<PrestamoUsuario, String>("fecha_devolucion"));
         colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<PrestamoUsuario, String>("fecha_prestamo"));
-        colCantidad.setCellValueFactory(new PropertyValueFactory<PrestamoUsuario, Integer>("cantidad"));
         colEstado.setCellValueFactory(new PropertyValueFactory<PrestamoUsuario, Integer>("estado"));
     }
 
@@ -75,10 +77,24 @@ public class PrestamosUserController {
                 || prestamos.tituloProperty().getValue().toLowerCase().contains(busqueda);
             });
         });
+        cmbxEstado.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) -> {
+            filtro.setPredicate(prestamos -> {
+                if(newVal == null || newVal.isEmpty()){
+                    return true;
+                }
+                String estado = newVal.toLowerCase();
+                return prestamos.estadoProperty().getValue().toLowerCase().contains(estado);
+            });
+        });
 
         SortedList<PrestamoUsuario> datos = new SortedList<>(filtro);
         datos.comparatorProperty().bind(tbPrestamos.comparatorProperty());
         tbPrestamos.setItems(datos);
+    }
+
+    private void cargarComboBox(){
+        Estado e = new Estado();
+        cmbxEstado.getItems().addAll(e.obtenerEstados());
     }
 
     @FXML
@@ -91,10 +107,5 @@ public class PrestamosUserController {
         stage.initOwner(null);
         stage.setScene(new Scene(root));
         stage.showAndWait();
-    }
-
-    @FXML
-    private void guardarPresatmo() { 
-
     }
 }

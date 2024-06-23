@@ -1,69 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.LoginController">
-   <children>
-      <Pane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2F4F4F;">
-         <children>
-            <Label layoutX="124.0" layoutY="57.0" text="BiblioSys" textFill="WHITE">
-               <font>
-                  <Font name="Thonburi Bold" size="24.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="193.0" fitWidth="194.0" layoutX="79.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../Downloads/biblioteca-en-linea%20(1).png" />
-               </image>
-            </ImageView>
-            <Label layoutX="48.0" layoutY="416.0" text="Optimiza tu Biblioteca, Inspira la Lectura" textFill="WHITE">
-               <font>
-                  <Font name="Thonburi Bold" size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="350.0" prefHeight="500.0" prefWidth="350.0">
-         <children>
-            <Label layoutX="86.0" layoutY="52.0" text="Inicio de Sesión" textFill="DARKSLATEGRAY">
-               <font>
-                  <Font name="Thonburi Bold" size="24.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfUsuario" layoutX="71.0" layoutY="187.0" prefHeight="26.0" prefWidth="209.0">
-               <font>
-                  <Font name="Thonburi" size="13.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="tfPassword" layoutX="73.0" layoutY="287.0" prefHeight="26.0" prefWidth="209.0">
-               <font>
-                  <Font name="Thonburi" size="13.0" />
-               </font>
-            </PasswordField>
-            <Label layoutX="75.0" layoutY="158.0" text="Usuario" textFill="DARKSLATEGRAY">
-               <font>
-                  <Font name="Thonburi Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="80.0" layoutY="258.0" text="Contraseña" textFill="DARKSLATEGRAY">
-               <font>
-                  <Font name="Thonburi Bold" size="13.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnEntrar" layoutX="78.0" layoutY="390.0" onAction="#btnEntrar_click" mnemonicParsing="false" prefHeight="27.0" prefWidth="209.0" style="-fx-background-color: #FFA500; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
-               <font>
-                  <Font name="Thonburi Bold" size="16.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.LoginController">
+   <HBox spacing="0" HBox.hgrow="ALWAYS">
+      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2F4F4F;" VBox.vgrow="ALWAYS">
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label text="BiblioSys" textFill="WHITE">
+                  <font>
+                     <Font name="Thonburi Bold" size="24.0" />
+                  </font>
+               </Label>
+            </children>
+            <VBox.margin>
+               <Insets top="60.0" />
+            </VBox.margin>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0">
+            <children>
+               <ImageView fx:id="imageView" fitHeight="158.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+
+               </ImageView>
+            </children>
+            <VBox.margin>
+               <Insets bottom="60.0" />
+            </VBox.margin>
+         </HBox>
+         <Label text="Optimiza tu Biblioteca, Inspira la Lectura" textFill="WHITE">
+            <font>
+               <Font name="Thonburi Bold" size="13.0" />
+            </font>
+         </Label>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="500.0" prefWidth="350.0" spacing="20.0" VBox.vgrow="ALWAYS">
+         <GridPane>
+            <columnConstraints>
+               <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Usuario" textAlignment="CENTER" textFill="DARKSLATEGRAY">
+                              <font>
+                                 <Font name="Thonburi Bold" size="13.0" />
+                              </font>
+                              <graphic>
+                                 <Label fx:id="iconUser" textFill="DARKSLATEGRAY" text="" />
+                              </graphic>
+                           </Label>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                  <children>
+                     <Label text="Contraseña" textAlignment="CENTER" textFill="DARKSLATEGRAY">
+                        <font>
+                           <Font name="Thonburi Bold" size="13.0" />
+                        </font>
+                        <graphic>
+                           <Label fx:id="iconLock" textFill="DARKSLATEGRAY"/>
+                        </graphic>
+                     </Label>
+                  </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="251.0" styleClass="search-box" stylesheets="@Style.css" GridPane.rowIndex="3">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <GridPane.margin>
+                     <Insets left="30.0" right="30.0" />
+                  </GridPane.margin>
+               </HBox>
+               <TextField fx:id="tfUsuario" styleClass="transparent" stylesheets="@Style.css" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                     <Insets left="30.0" right="30.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font name="Thonburi" size="13.0" />
+                  </font>
+               </TextField>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
+                  <children>
+                     <JFXButton onAction="#btnEntrar_click" prefWidth="290.0" stylesheets="@Style.css" text="Entrar" textFill="WHITE">
+                        <font>
+                           <Font name="Thonburi Bold" size="16.0" />
+                        </font>
+                        <styleClass>
+                           <String fx:value="search-button" />
+                           <String fx:value="shadow" />
+                        </styleClass>
+                     </JFXButton>
+                  </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label text="Inicio de Sesión" textFill="DARKSLATEGRAY">
+                        <font>
+                           <Font name="Thonburi Bold" size="24.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
+                  <children>
+                     <HBox prefHeight="30.0" prefWidth="336.0" styleClass="search-box" stylesheets="@Style.css">
+                        <HBox.margin>
+                           <Insets left="30.0" right="30.0" />
+                        </HBox.margin>
+                        <children>
+                           <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="287.0" styleClass="transparent" stylesheets="@Style.css" />
+                        </children>
+                     </HBox>
+                  </children>
+               </HBox>
+            </children>
+         </GridPane>
+      </VBox>
+   </HBox>
+</VBox>
