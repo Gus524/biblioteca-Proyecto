@@ -7,6 +7,7 @@ import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import com.biblioteca.App;
 import com.biblioteca.modelos.Login;
+import com.biblioteca.utilidades.Fecha;
 import com.biblioteca.utilidades.ShowAlert;
 
 import javafx.fxml.FXML;
@@ -30,7 +31,7 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle rsc){
-        Image image = new Image(App.class.getResource("images/logo.jpeg").toExternalForm());
+        Image image = new Image(App.class.getResource("images/logo.png").toExternalForm());
         System.out.println("Ruta:" + image.getUrl());
         imageView.setImage(image);
         cargarIconos();
@@ -38,8 +39,18 @@ public class LoginController implements Initializable{
     @FXML
     private void btnEntrar_click() throws IOException{
         Login login = new Login(tfUsuario.getText(), tfPassword.getText());
+        Fecha.comprobarMulta();
         if(login.comprobarUser()){
-            App.setRoot("mainUser");
+            switch (tfUsuario.getText()) {
+                case "admin":
+                    App.setRoot("mainAdmin");
+                    break;
+                case "usuario":
+                    App.setRoot("mainUser");
+                    break;
+                default:
+                    break;
+            }
         }
         else{
             ShowAlert.show("Error", "Usuario o contraseña incorrectos");

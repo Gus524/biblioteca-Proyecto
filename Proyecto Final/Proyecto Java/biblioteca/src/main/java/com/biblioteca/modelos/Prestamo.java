@@ -70,7 +70,7 @@ public class Prestamo implements ConvertirMapeo{
     public void setId_prestamo_user(int id_prestamo_user){
         this.id_prestamo_user.set(id_prestamo_user);
     }
-    //ESTE ES CONSTRUCTOR POR DEFECTO, el que solo tiene ()
+
     public Prestamo() {
         this.id_prestamo_user = new SimpleIntegerProperty(0);
         this.id_prestamo = new SimpleIntegerProperty(0);
@@ -107,7 +107,7 @@ public class Prestamo implements ConvertirMapeo{
             (Integer) map.get("id_user"),
             (String) map.get("fecha_prestamo"),
             (Long) map.get("ISBN"),
-            (String) map.get("estado"),
+            (String) map.get("desc_estado"),
             (String) map.get("fecha_devolucion"),
             (String) map.get("devolucion"),
             (Integer) map.get("id_estado")
@@ -133,14 +133,35 @@ public class Prestamo implements ConvertirMapeo{
     }
 
     public Boolean actualizarEstadoDevuelto(){
-        return (cnn.ejecutar("UPDATE Prestamo_Concentrado SET id_estado = 4 AND devolucion = ? WHERE id_prestamo_user = ?", 
-                    getFecha_devolucion(), 
-                    getId_prestamo_user()) > 0);
+        return (cnn.ejecutar("UPDATE Prestamo_Concentrado SET " +
+                            "id_estado = 2, devolucion = (date('now')) WHERE " +
+                            "id_prestamo_user = ?", 
+                            getId_prestamo_user()) > 0);
     
     }
 
     public List<Prestamo> obtenerPrestamo(){
-        return convertirMapeo(cnn.consultar("SELECT * FROM Prestamo WHERE id_prestamo = ?", 
+        return convertirMapeo(cnn.consultar("SELECT pc.*, p.id_user, p.fecha_prestamo, e.desc_estado FROM " +
+                                            "Prestamo_Concentrado pc JOIN Prestamo p ON " +
+                                            "pc.id_prestamo = pc.id_prestamo JOIN Estado e ON " +
+                                            "e.id_estado = pc.id_estado WHERE p.id_prestamo = ?", 
                                             getId_prestamo()));
+    }
+
+    public List<Prestamo> obtenerAtrasos(){
+        return convertirMapeo(cnn.consultar("SELECT * FROM Prestamo_Concentrado pc JOIN Prestamo p ON "+
+                                            "p.id_prestamo = pc.id_prestamo WHERE "+
+                                            "date('now') > fecha_devolucion AND id_estado = 1"));
+    }
+    public Boolean acutalizarCantidadEdicion(){
+        return (cnn.ejecutar("UPDATE Edicion SET " +
+                            "disponibles = disponibles + 1 WHERE " +
+                            "ISBN = ?", getISBN()) > 0);
+    }
+
+    public Boolean quitarCantidadEdicion(){
+        return (cnn.ejecutar("UPDATE Edicion SET " +
+                            "disponibles = disponibles - 1 WHERE " +
+                            "ISBN = ?", getISBN()) > 0);
     }
 }

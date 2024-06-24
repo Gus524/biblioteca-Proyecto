@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,68 +13,65 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" stylesheets="@Style.css"
-   xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.biblioteca.controladores.LectoresUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.LectoresUserController">
    <children>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" stylesheets="@Style.css">
-               <HBox.margin>
-                  <Insets bottom="20.0" right="30.0" top="30.0" />
-               </HBox.margin>
+      <BorderPane layoutX="99.0" layoutY="229.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="tfBuscar" prefHeight="40.0" prefWidth="245.0"
-                     styleClass="transparent" stylesheets="@Style.css">
-                     <font>
-                        <Font name="Thonburi" size="13.0" />
-                     </font>
-                  </TextField>
+                  <GridPane prefWidth="1000.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <TextField fx:id="tfBuscar" prefHeight="28.0" prefWidth="272.0" promptText="Buscar..." styleClass="transparent">
+                                 <font>
+                                    <Font name="Thonburi" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <JFXButton onAction="#mostrarModal" fx:id="btnNuevo" styleClass="add-button" text="Nuevo Lector">
+                                 <font>
+                                    <Font name="Thonburi Bold" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
                </children>
-               <styleClass>
-                  <String fx:value="search-box" />
-                  <String fx:value="shadow" />
-               </styleClass>
             </HBox>
-         </children>
-      </HBox>
-      <HBox prefHeight="724.0" prefWidth="1071.0">
-         <children>
-            <GridPane prefHeight="649.0" prefWidth="980.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="311.95843505859375" minHeight="10.0"
-                     prefHeight="36.45570373535156" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="625.5858459472656" minHeight="10.0"
-                     prefHeight="612.5442962646484" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <TableView prefHeight="649.0" prefWidth="414.0" stylesheets="@Style.css"
-                     GridPane.rowIndex="1">
-                     <columns>
-                        <TableColumn fx:id="colLibro" prefWidth="244.5401611328125" text="Libro" />
-                        <TableColumn fx:id="colLector" prefWidth="167.95989990234375" text="Lector" />
-                        <TableColumn fx:id="colFechaInicio" prefWidth="174.53884887695312"
-                           text="Fecha prestado" />
-                        <TableColumn fx:id="colFechaDev" prefWidth="182.59698486328125"
-                           text="Fecha devolución" />
-                        <TableColumn fx:id="colCantidad" prefWidth="103.00433349609375"
-                           text="Cantidad" />
-                        <TableColumn fx:id="colEstado" prefWidth="106.79095458984375" text="Estado" />
-                     </columns>
-                  </TableView>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" />
-               </HBox.margin>
-            </GridPane>
-         </children>
-      </HBox>
+         </top>
+         <center>
+            <TableView fx:id="tbLectores" prefHeight="200.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="colCliente" prefWidth="100.0" text="# Cliente" />
+                <TableColumn fx:id="colNombre" prefWidth="200.0" text="Nombre" />
+                  <TableColumn fx:id="colApellido" prefWidth="200.0" text="Apellido" />
+                  <TableColumn fx:id="colCorreo" prefWidth="439.0" text="Correo" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets bottom="60.0" left="30.0" right="30.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
    </children>
-</VBox>
+</AnchorPane>

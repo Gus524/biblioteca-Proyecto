@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 /**
  * JavaFX App
  */
@@ -22,7 +23,7 @@ public class App extends Application {
         System.out.println("Loading CSS: " + css);
         scene.getStylesheets().add(css);
         stage.setScene(scene);
-        stage.setTitle("Inicio de Sesión");
+        stage.setTitle("Biblioteca");
         stage.show();
     }
 

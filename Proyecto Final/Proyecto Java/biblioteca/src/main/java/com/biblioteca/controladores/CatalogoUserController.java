@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 import com.biblioteca.modelos.Edicion;
 import com.biblioteca.modelos.Filtro;
+import com.jfoenix.controls.JFXComboBox;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +12,6 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,9 +34,9 @@ public class CatalogoUserController {
     @FXML
     private TableColumn<Edicion, String> colTitulo;
     @FXML
-    private ComboBox<String> cmbxAutor;
+    private JFXComboBox<String> cmbxAutor;
     @FXML
-    private ComboBox<String> cmbxCategoria;
+    private JFXComboBox<String> cmbxCategoria;
     @FXML
     private TextField tfBuscar;
     @FXML

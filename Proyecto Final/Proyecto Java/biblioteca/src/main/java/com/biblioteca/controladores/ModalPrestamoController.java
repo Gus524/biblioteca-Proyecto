@@ -3,20 +3,27 @@ package com.biblioteca.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.biblioteca.App;
 import com.biblioteca.modelos.Edicion;
 import com.biblioteca.modelos.Prestamo;
 import com.biblioteca.modelos.Usuario;
 import com.biblioteca.utilidades.Fecha;
 import com.biblioteca.utilidades.ShowAlert;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ModalPrestamoController {
     @FXML
@@ -27,6 +34,10 @@ public class ModalPrestamoController {
     private ComboBox<Usuario> cmbxLector;
     @FXML
     private ComboBox<Edicion> cmbxLibro;
+    @FXML
+    private Label plusIcon;
+    @FXML Label addIcon;
+    @FXML Label removeIcon;
     @FXML
     private DatePicker dpFecha;
     @FXML
@@ -41,6 +52,7 @@ public class ModalPrestamoController {
         cargarListas();
         configurarFiltroLector();
         configurarFiltroLibros();
+        cargarIconos();
     }
 
     private void cargarListas(){
@@ -113,7 +125,8 @@ public class ModalPrestamoController {
             for(Edicion e : listaLibros){
                 p.setISBN(e.ISBNProperty().getValue());
                 System.out.println(p.ISBNProperty().getValue());
-                p.agregarConcentrado();
+                if (p.agregarConcentrado())
+                    p.quitarCantidadEdicion();
             }
             ShowAlert.show("Prueba", "Si se pudo");
         } catch (Exception e) {
@@ -127,7 +140,20 @@ public class ModalPrestamoController {
     }
 
     @FXML
-    private void agregarLector(){
-        
+    private void agregarLector() throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/modals/agregarLector.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Agregar Lector");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(null);
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
+
+    private void cargarIconos(){
+        plusIcon.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.PLUS));
+        addIcon.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.PLUS));
+        removeIcon.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.MINUS));
     }
 }

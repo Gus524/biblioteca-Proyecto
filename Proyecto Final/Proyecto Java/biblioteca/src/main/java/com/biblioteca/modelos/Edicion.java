@@ -33,7 +33,59 @@ public class Edicion implements ConvertirMapeo {
     public StringProperty autoresProperty() { return autores; }
     public StringProperty categoriasProperty() { return categorias; }
 
+    public String getTitulo()   {return titulo.get(); }
+    public int getId_libro()    { return id_libro.get(); }
+    public long getISBN()       { return ISBN.get(); }
+    public int getPublicacion() { return publicacion.get(); }
+    public int getNo_edicion()  { return no_edicion.get(); }
+    public int getDisponibles() { return disponibles.get(); }
+    public double getPrecio()    { return precio.get(); }
+    public String getEditorial() { return editorial.get(); }
+    public String getAutores()    { return autores.get(); }
+    public String getCategorias() { return categorias.get(); }
+
+    public void setTitulo(String titulo){
+        this.titulo.set(titulo); 
+    }
+    public void setId_libro(int id_libro){
+        this.id_libro.set(id_libro);
+    }
+    public void setISBN(long ISBN){
+        this.ISBN.set(ISBN);
+    }
+    public void setPublicacion(int publicacion){ 
+        this.publicacion.set(publicacion);
+    }
+    public void setNo_edicion(int no_edicion){
+        this.no_edicion.set(no_edicion);
+    }
+    public void setDisponibles(int disponibles){ 
+        this.disponibles.set(disponibles); 
+    }
+    public void setPrecio(double precio){
+        this.precio.set(precio);
+    }
+    public void setEditorial(String editorial){
+        this.editorial.set(editorial); 
+    }
+    public void setAutores(String autores){
+        this.autores.set(autores);
+    }
+    public void setCategorias(String categorias){
+        this.categorias.set(categorias); 
+    }
+
     public Edicion() {
+        this.titulo = new SimpleStringProperty("");
+        this.id_libro = new SimpleIntegerProperty(0);
+        this.ISBN = new SimpleLongProperty(0L);
+        this.publicacion = new SimpleIntegerProperty(0);
+        this.no_edicion = new SimpleIntegerProperty(0);
+        this.disponibles = new SimpleIntegerProperty(0);
+        this.precio = new SimpleDoubleProperty(0.0);
+        this.editorial = new SimpleStringProperty("");
+        this.autores = new SimpleStringProperty("");
+        this.categorias = new SimpleStringProperty("");
         this.cnn = new ConnectionDB();
     }
 
@@ -108,68 +160,77 @@ public class Edicion implements ConvertirMapeo {
     public List<Edicion> buscarEdicion(){
         return convertirMapeo(cnn.consultar("SELECT * FROM Edicion e " + 
                                             "JOIN Libro l ON e.id_libro = l.id_libro WHERE e.ISBN = ?", 
-                                            this.ISBN.get()));
+                                            getISBN()));
     }
 
     public Boolean agregarEdicion(){
         return (cnn.ejecutar("INSERT INTO Edicion "
                    + "(no_edicion, id_libro, ISBN, publicacion, precio, disponibles) VALUES "
                    + "(?, ?, ?, ?, ?, ?)", 
-                   this.no_edicion.get(), 
-                   this.id_libro.get(), 
-                   this.ISBN.get(), 
-                   this.publicacion.get(), 
-                   this.precio.get(), 
-                   this.disponibles.get()) > 0);
+                   getNo_edicion(), 
+                   getId_libro(), 
+                   getISBN(), 
+                   getPublicacion(), 
+                   getPrecio(), 
+                   getDisponibles()) > 0);
+    }
+
+    public Boolean actualizarEdicion(){
+        return (cnn.ejecutar("UPDATE Edicion SET no_edicion = ?, publicacion = ?, precio = ?, disponibles = ? WHERE ISBN = ?", 
+                            getNo_edicion(),
+                            getPublicacion(), 
+                            getPrecio(), 
+                            getDisponibles(), 
+                            getISBN()) > 0);
     }
 
     public Boolean actualizarPublicacion(){
         return (cnn.ejecutar("UPDATE Edicion SET publicacion = ? WHERE ISBN = ?", 
-                            this.publicacion.get(), 
-                            this.ISBN.get()) > 0);
+                            getPublicacion(), 
+                            getISBN()) > 0);
     }
 
     public Boolean eliminarEdicion(){
         return (cnn.ejecutar("DELETE FROM Edicion WHERE ISBN = ?", 
-                            this.ISBN.get()) > 0);
+                            getISBN()) > 0);
     }
 
     public Boolean editarNumero(){
         return (cnn.ejecutar("UPDATE Edicion SET no_edicion = ? WHERE ISBN = ?", 
-                            this.no_edicion.get(), 
-                            this.ISBN.get()) > 0);
+                            getNo_edicion(), 
+                            getISBN()) > 0);
     }
     
     public Boolean comoprobarLibro() {
         return (cnn.comprobar("SELECT * FROM Libro WHERE id_libro = ?", 
-                this.id_libro.get()) > 0);
+                getId_libro()) > 0);
     }
 
     public Boolean comprobarEdicion() {
         return (cnn.comprobar("SELECT * FROM Edicion WHERE ISBN = ?", 
-                this.ISBN.get()) > 0);
+                getISBN()) > 0);
     }
 
     public Boolean actualizarPrecio(){
         return (cnn.ejecutar("UPDATE Edicion SET precio = ? WHERE ISBN = ?", 
-                this.precio.get(), 
-                this.ISBN.get()) > 0);
+                getPrecio(), 
+                getISBN()) > 0);
     }
 
     public Boolean actualizarDisponibles() {
         return (cnn.ejecutar("UPDATE Edicion SET disponibles = ? WHERE ISBN = ?", 
-                this.disponibles.get(), 
-                this.ISBN.get()) > 0);
+                getDisponibles(), 
+                getISBN()) > 0);
     }
 
     public Boolean actualizarTitulo() {
         return (cnn.ejecutar("UPDATE Libro SET titulo = ? WHERE id_libro = ?", 
-                this.titulo.get(),   
-                this.id_libro.get()) > 0);
+                getTitulo(),   
+                getId_libro()) > 0);
     }
 
     public Boolean actualizarPrecioEdicion() {
         return (cnn.ejecutar("UPDATE * FROM Edicion WHERE ISBN = ?", 
-                this.ISBN.get()) > 0);
+                getISBN()) > 0);
     }
 }

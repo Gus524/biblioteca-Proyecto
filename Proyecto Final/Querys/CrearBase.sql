@@ -98,23 +98,14 @@ CREATE TABLE Venta_Detalle (
     FOREIGN KEY (ISBN) REFERENCES Edicion(ISBN)
 );
 
-CREATE TABLE Multa_Historial (
-    id_historial    INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_user         INTEGER,
-    total_multa     REAL NOT NULL,
-    FOREIGN KEY (id_user) REFERENCES Usuario(id_user)
-);
-
 CREATE TABLE Multa (
     id_multa            INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_historial        INTEGER,
+    id_user		        INTEGER,
     id_prestamo_user    INTEGER,
-    id_estado           INTEGER,
+	estatus 			TEXT,
     costo_multa         REAL NOT NULL,
-    fecha_multa         TEXT,
-    FOREIGN KEY (id_historial) REFERENCES Multa_Historial(id_historial),
-    FOREIGN KEY (id_prestamo_user) REFERENCES Prestamo_Concentrado(id_prestamo_user),
-    FOREIGN KEY (id_estado) REFERENCES Estado(id_estado)
+	FOREIGN KEY (id_user) REFERENCES Usuario(id_user)
+    FOREIGN KEY (id_prestamo_user) REFERENCES Prestamo_Concentrado(id_prestamo_user)
 );
 
 -- Consultas de selección
@@ -131,5 +122,4 @@ SELECT * FROM Prestamo;
 SELECT * FROM Prestamo_Concentrado;
 SELECT * FROM Venta;
 SELECT * FROM Venta_Detalle;
-SELECT * FROM Multa_Historial;
 SELECT * FROM Multa;

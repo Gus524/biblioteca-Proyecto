@@ -1,84 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import java.lang.String?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.MainUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.controladores.MainUserController">
    <children>
-      <BorderPane fx:id="panel" layoutX="-17.0" prefHeight="810.0" prefWidth="1344.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-17.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="panel" layoutX="73.0" layoutY="18.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="810.0" prefWidth="250.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" text="BiblioSys" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi Bold" size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Separator prefWidth="200.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
+                  <Label fx:id="titulo" text="BiblioSys" textFill="WHITE">
+                     <font>
+                        <Font name="Thonburi Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="100.0" top="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton fx:id="btnCatalogo" onAction="#cargarCatalogo" styleClass="button-navbar" text="Catálogo" textFill="WHITE">
+                     <graphic>
                         <Label fx:id="iconBook" styleClass="icon" />
-                        <JFXButton fx:id="btnCatalogo" onAction="#cargarCatalogo" styleClass="sidebar-button" text="Catálogo" textFill="ORANGE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="120.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
+                     </graphic>
+                     <font>
+                        <Font name="Thonburi Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPrestamos" onAction="#cargarPrestamos" styleClass="button-navbar" text="Préstamos" textFill="WHITE">
+                     <graphic>
                         <Label fx:id="iconList" styleClass="icon" />
-                        <JFXButton fx:id="btnPrestamos" onAction="#cargarPrestamos" styleClass="sidebar-button" text="Préstamos" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="220.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
+                     </graphic>
+                     <font>
+                        <Font name="Thonburi Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnLectores" onAction="#cargarLectores" styleClass="button-navbar" text="Lectores" textFill="WHITE">
+                     <font>
+                        <Font name="Thonburi Bold" size="16.0" />
+                     </font>
+                     <graphic>
                         <Label fx:id="iconUser" styleClass="icon"/>
-                        <JFXButton fx:id="btnLectores" styleClass="sidebar-button" onAction="#cargarLectores" text="Lectores" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="200.0" prefWidth="200.0" />
-                  <Separator prefWidth="200.0" />
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="320.0" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="iconLock" styleClass="icon" />
-                        <JFXButton fx:id="btnCerrarSesion" onAction="#cerrarSesion" styleClass="sidebar-button" text="Cerrar Sesión" textFill="WHITE">
-                           <font>
-                              <Font name="Thonburi" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnMultas" onAction="#cargarMultas" layoutX="48.0" layoutY="459.0" styleClass="button-navbar" text="Multas" textFill="WHITE">
+                     <font>
+                        <Font name="Thonburi Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="iconFile" styleClass="icon"/>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Separator prefWidth="100.0"/> 
+                  <JFXButton onAction="#cerrarSesion" text="Cerrar Sesión" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="140.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Thonburi Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
          </left>
          <center>
-
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="¡Bienvenid@ a BiblioSys!" textFill="DARKSLATEGRAY">
+                     <font>
+                        <Font name="Thonburi Bold" size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </center>
       </BorderPane>
    </children>

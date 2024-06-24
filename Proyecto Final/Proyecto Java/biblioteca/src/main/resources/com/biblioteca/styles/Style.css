@@ -1,81 +1,66 @@
-/* Style.css */
-
-.sidebar {
-    -fx-background-color: #2F4F4F;
+/* NAV BAR*/
+.button-navbar {
+    -fx-background-color: #2F4F4F; /* Color de fondo por defecto */
+    -fx-text-fill: white;          /* Color del texto */
+    -fx-padding: 10px 20px;        /* Relleno del botón */
+    -fx-border-radius: 5px;        /* Bordes redondeados */
+    -fx-background-radius: 5px;
 }
 
-.sidebar-button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-text-fill: white;
-    -fx-font-size: 18px;
-    -fx-padding: 10 20 10 10;
+.button-navbar:hover {
+    -fx-background-color: #ffffffaf; /* Color de fondo cuando el botón está en hover */
+    -fx-text-fill: #2F4F4F;  
 }
 
-.sidebar-button:hover {
-    -fx-background-color: #3A5F5F;
-    -fx-border-color: #FFA500;
-    -fx-text-fill: #FFA500;
-    -fx-cursor: hand;
-}
 
-.icon {
-    -fx-fill: white;
-    -fx-font-size: 1.8em;
-    -fx-padding-right: 10px;
-}
-
-.icon:hover {
-    -fx-fill: #FFA500;
-    -fx-cursor: hand;
-}
-
-.active-button {
-    -fx-text-fill: #FFA500;
-    -fx-border-color: #FFA500;
-    -fx-background-color: #3A5F5F;
-}
-
-.active-icon {
-    -fx-fill: #FFA500;
-}
-
-.search-box{
-    -fx-background-color: #FFFF;
-    -fx-background-radius: 100;
-}
-
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
-}
-
-.search-button{
+/* LOGIN */
+.login-button{
     -fx-background-color: #FFA500;
     -fx-background-radius: 30;
 }
 
 .shadow{
-    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1), 10.0, 0.0, 0.0, 10.0);
 }
 
-.comboBox{
-    -fx-background-color: #ffa60056;
-    -fx-background-radius: 30;
-    -fx-font-family: "Thonburi";
-    -fx-font-size: 14px;
+/* CATALOGO */
+
+.transparent{
+    -fx-background-color: rgba(0, 0, 0, 0.05);
 }
+
+.comboBox-filter{
+    -fx-font-family: 'Thonburi';
+    -fx-font-size: 11px;
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+    -fx-text-fill: black;
+}
+
+.add-button{
+    -fx-background-color: #2F4F4F;
+    -fx-font-family: 'Thonburi';
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+.add-button:hover{
+    -fx-background-color: #ffca68;
+    -fx-text-fill: #2f4f4f;
+}
+
+
+/* TABLA */
 
 .table-view {
     -fx-background-color: #f0f0f0; /* Color de fondo */
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #FFA500; /* Color de fondo de las cabeceras de columna */
+    -fx-background-color: #2f4f4f; /* Color de fondo de las cabeceras de columna */
 }
 
+
 .table-view .column-header, .table-view .filler {
-    -fx-background-color: transparent; /* Fondo transparente para las cabeceras */
+    -fx-background-color: #2f4f4f; /* Fondo transparente para las cabeceras */
 }
 
 .table-view .table-row-cell {
@@ -88,12 +73,69 @@
 }
 
 .table-view .table-row-cell:selected {
-    -fx-background-color: #0078d7; /* Color de fondo cuando está seleccionada una fila */
+    -fx-background-color: #ffca68; /* Color de fondo cuando está seleccionada una fila */
     -fx-text-fill: white; /* Color del texto cuando está seleccionada una fila */
 }
 
 .table-view .column-header .label {
     -fx-font-family: "Thonburi"; /* Tipo de fuente */
-    -fx-font-size: 16px; /* Tamaño de fuente de las cabeceras */
+    -fx-font-size: 14px; /* Tamaño de fuente de las cabeceras */
     -fx-font-weight: bold; /* Fuente en negrita para las cabeceras */
+    -fx-text-fill: white;
+}
+
+/* MODAL */
+
+.agregar-button{
+    -fx-background-color: #139755f5;
+    -fx-text-fill: #2f4f4f71;
+}
+
+.eliminar-button{
+    -fx-background-color: rgba(255, 0, 0, 0.275);
+    -fx-text-fill: rgba(255, 0, 0, 0.275);
+}
+
+.cancelar-button{
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+}
+
+.guardar-button{
+    -fx-background-color: #2f4f4f;
+    -fx-text-fill: white;
+}
+.jfx-button{
+    -fx-background-color: #2f4f4f;
+    -fx-text-fill: white;
+
+}
+.jfx-button:hover{
+    -fx-background-color: #ffca68;
+    -fx-text-fill: #2f4f4f;
+}
+.jfx-button-aceptar {
+    -fx-background-color: #4CAF50; /* color de fondo verde */
+    -fx-text-fill: white; /* color de texto blanco */
+    -fx-font-size: 14px; /* tamaño de fuente */
+    -fx-padding: 8px 16px; /* relleno */
+    -fx-background-radius: 4px; /* radio de esquina del fondo */
+    -fx-border-radius: 4px; /* radio de esquina del borde */
+}
+
+.jfx-button-aceptar:hover {
+    -fx-background-color: #45a049; /* color de fondo al pasar el mouse */
+}
+
+/* Estilo para botón Cancelar */
+.jfx-button-cancelar {
+    -fx-background-color: #f44336; /* color de fondo rojo */
+    -fx-text-fill: white; /* color de texto blanco */
+    -fx-font-size: 14px; /* tamaño de fuente */
+    -fx-padding: 8px 16px; /* relleno */
+    -fx-background-radius: 4px; /* radio de esquina del fondo */
+    -fx-border-radius: 4px; /* radio de esquina del borde */
+}
+
+.jfx-button-cancelar:hover {
+    -fx-background-color: #e57373; /* color de fondo al pasar el mouse */
 }

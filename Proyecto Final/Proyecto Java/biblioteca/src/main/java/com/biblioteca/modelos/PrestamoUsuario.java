@@ -32,10 +32,52 @@ public class PrestamoUsuario implements ConvertirMapeo {
     public StringProperty fecha_devolucionProperty() { return fecha_devolucion; }
     public IntegerProperty id_prestamo_userProperty() { return id_prestamo_user; }
     
+    public int getId_prestamo() { return id_prestamo.get(); }
+    public int getId_user() { return id_user.get(); }
+    public String getEmail() { return email.get(); }
+    public String getTitulo() { return titulo.get(); }
+    public String getEstado() { return estado.get(); }
+    public String getFecha_prestamo() { return fecha_prestamo.get(); }
+    public String getFecha_devolucion() { return fecha_devolucion.get(); }
+    public int getId_prestamo_user() { return id_prestamo_user.get(); }
+
+    public void setId_prestamo(int id_prestamo){
+        this.id_prestamo.set(id_prestamo);
+    }
+    public void setId_user(int id_user){ 
+        this.id_user.set(id_user);
+    }
+    public void setEmail(String email){
+        this.email.set(email);
+    }
+    public void setTitulo(String titulo){
+        this.titulo.set(titulo);
+    }
+    public void setEstado(String estado){
+        this.estado.set(estado);
+    }
+    public void setFecha_prestamo(String fecha_prestamo){ 
+        this.fecha_prestamo.set(fecha_prestamo);
+    }
+    public void setFecha_devolucion(String fecha_devolucion){
+        this.fecha_devolucion.set(fecha_devolucion);
+    }
+    public void setId_prestamo_user(int id_prestamo_user){
+        this.id_prestamo_user.set(id_prestamo_user); 
+    }
 
     public PrestamoUsuario(){
+        this.id_prestamo = new SimpleIntegerProperty(0);
+        this.id_user = new SimpleIntegerProperty(0);
+        this.email = new SimpleStringProperty("");
+        this.titulo = new SimpleStringProperty("");
+        this.estado = new SimpleStringProperty("");
+        this.fecha_prestamo = new SimpleStringProperty("");
+        this.fecha_devolucion = new SimpleStringProperty("");
+        this.id_prestamo_user = new SimpleIntegerProperty(0);
         this.cnn = new ConnectionDB();
     }
+    
     public PrestamoUsuario(Integer id_prestamo, Integer id_user, String email, String titulo, String estado, String fecha_prestamo, String fecha_devolucion, Integer id_prestamo_user){
         this.id_prestamo = new SimpleIntegerProperty(id_prestamo);
         this.id_user = new SimpleIntegerProperty(id_user);

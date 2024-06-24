@@ -1,4 +1,4 @@
-module com.biblioteca {
+module com.biblioteca.App {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;

@@ -93,7 +93,7 @@
                      </Label>
                   </children>
                </HBox>
-               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="251.0" styleClass="search-box" stylesheets="@Style.css" GridPane.rowIndex="3">
+               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="251.0" styleClass="search-box" GridPane.rowIndex="3">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>
@@ -101,7 +101,7 @@
                      <Insets left="30.0" right="30.0" />
                   </GridPane.margin>
                </HBox>
-               <TextField fx:id="tfUsuario" styleClass="transparent" stylesheets="@Style.css" GridPane.rowIndex="3">
+               <TextField fx:id="tfUsuario" styleClass="transparent" GridPane.rowIndex="3">
                   <GridPane.margin>
                      <Insets left="30.0" right="30.0" />
                   </GridPane.margin>
@@ -111,7 +111,7 @@
                </TextField>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
                   <children>
-                     <JFXButton onAction="#btnEntrar_click" prefWidth="290.0" stylesheets="@Style.css" text="Entrar" textFill="WHITE">
+                     <JFXButton onAction="#btnEntrar_click" prefWidth="290.0" styleClass="login-button" text="Entrar" textFill="WHITE">
                         <font>
                            <Font name="Thonburi Bold" size="16.0" />
                         </font>
@@ -133,12 +133,12 @@
                </HBox>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
                   <children>
-                     <HBox prefHeight="30.0" prefWidth="336.0" styleClass="search-box" stylesheets="@Style.css">
+                     <HBox prefHeight="30.0" prefWidth="336.0" styleClass="search-box">
                         <HBox.margin>
                            <Insets left="30.0" right="30.0" />
                         </HBox.margin>
                         <children>
-                           <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="287.0" styleClass="transparent" stylesheets="@Style.css" />
+                           <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="287.0" styleClass="transparent" />
                         </children>
                      </HBox>
                   </children>

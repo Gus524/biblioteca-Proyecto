@@ -9,11 +9,12 @@ import java.io.IOException;
 
 import com.biblioteca.modelos.Estado;
 import com.biblioteca.modelos.PrestamoUsuario;
+import com.jfoenix.controls.JFXComboBox;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,7 +40,7 @@ public class PrestamosUserController {
     @FXML
     private TextField tfBuscar;
     @FXML
-    private ComboBox<String> cmbxEstado;
+    private JFXComboBox<String> cmbxEstado;
     @FXML
     private ObservableList<PrestamoUsuario> prestamos;
 
@@ -99,7 +100,7 @@ public class PrestamosUserController {
 
     @FXML
     private void mostrarModal() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/nuevoPrestamo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/modals/nuevoPrestamo.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();        
         stage.setTitle("Nuevo Prestamo");

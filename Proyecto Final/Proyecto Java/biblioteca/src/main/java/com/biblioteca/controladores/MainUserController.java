@@ -23,13 +23,15 @@ public class MainUserController{
     @FXML
     private JFXButton btnPrestamos;
     @FXML
+    private JFXButton btnMultas;
+    @FXML
     private Label iconBook;
     @FXML
     private Label iconList;
     @FXML
     private Label iconUser;
     @FXML
-    private Label iconLock;
+    private Label iconFile;
     @FXML
     private BorderPane panel;
 
@@ -43,7 +45,7 @@ public class MainUserController{
         iconBook.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.BOOK, "1.8em"));
         iconList.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.LIST, "1.8em"));
         iconUser.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.USER, "1.8em"));
-        iconLock.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.LOCK, "1.8em"));
+        iconFile.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.FILE, "1.8em"));
     }
 
     @FXML
@@ -60,7 +62,7 @@ public class MainUserController{
 
     @FXML
     private void cargarPrestamos() throws IOException{
-        activarBoton(btnPrestamos, iconLock);
+        activarBoton(btnPrestamos, iconList);
         cargarContenido("prestamosUser");
     }
     
@@ -69,6 +71,12 @@ public class MainUserController{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/" + fxml + ".fxml"));
         Node node = loader.load();
         panel.setCenter(node);
+    }
+
+    @FXML
+    private void cargarMultas() throws IOException{
+        activarBoton(btnMultas, iconFile);
+        cargarContenido("multasUser");
     }
 
     private void activarBoton(JFXButton btn, Label icon){
@@ -82,10 +90,12 @@ public class MainUserController{
         btnCatalogo.getStyleClass().remove("active-button");
         btnLectores.getStyleClass().remove("active-button");
         btnPrestamos.getStyleClass().remove("active-button");
+        btnMultas.getStyleClass().remove("active button");
 
         iconBook.getStyleClass().remove("active-icon");
         iconList.getStyleClass().remove("active-icon");
         iconUser.getStyleClass().remove("active-icon");
+        iconFile.getStyleClass().remove("active-icon");
     }
 
     @FXML

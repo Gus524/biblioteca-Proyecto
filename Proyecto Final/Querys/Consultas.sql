@@ -26,6 +26,15 @@ SELECT p.id_prestamo, p.id_user, u.email, l.titulo, es.desc_estado, p.fecha_pres
 FROM Usuario u JOIN Prestamo p ON u.id_user = p.id_user JOIN Prestamo_Concentrado pc ON pc.id_prestamo = p.id_prestamo JOIN Edicion e ON e.ISBN = pc.ISBN JOIN Libro l ON l.id_libro = e.id_libro JOIN Estado es ON es.id_estado = pc.id_estado;
 
 SELECT * FROM Estado
-	
+
+SELECT m.*, l.titulo, u.email, e.ISBN, p.fecha_prestamo, pc.fecha_devolucion
+FROM Multa m JOIN Prestamo_Concentrado pc ON m.id_prestamo_user = pc.id_prestamo_user JOIN Prestamo p ON pc.id_prestamo = p.id_prestamo JOIN Edicion e ON e.ISBN = pc.ISBN JOIN Libro l ON l.id_libro = e.id_libro JOIN Usuario u ON u.id_user = m.id_user 
+
+SELECT * FROM Prestamo_Concentrado WHERE devolucion IS NULL
+
+SELECT * FROM Multa m JOIN Prestamo_Concentrado pc ON m.id_prestamo_user = pc.id_prestamo_user WHERE pc.id_prestamo_user = 1;
+
+SELECT * FROM Prestamo_Concentrado pc JOIN Prestamo p ON p.id_prestamo = pc.id_prestamo WHERE date('now') > fecha_devolucion AND id_estado = 1
+
 
 
