@@ -143,11 +143,11 @@ public class CatalogoAdminController {
         });
     }
 
-    private void configurarFilas(){
+    private void configurarFilas() {
         tbLibros.setRowFactory(t -> {
             TableRow<Edicion> fila = new TableRow<>();
             fila.setOnMouseClicked(event -> {
-                if(!fila.isEmpty()){
+                if (!fila.isEmpty()) {
                     Edicion e = fila.getItem();
                     try {
                         mostrarVerLibro(e);
@@ -161,7 +161,7 @@ public class CatalogoAdminController {
     }
 
     @FXML
-    private void mostrarVerLibro(Edicion e) throws IOException{
+    private void mostrarVerLibro(Edicion e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/modals/verLibro.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -175,10 +175,10 @@ public class CatalogoAdminController {
     }
 
     @FXML
-    private void mostrarModal() throws Exception{
+    private void mostrarModal() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/modals/nuevoLibro.fxml"));
         Parent root = loader.load();
-        Stage stage = new Stage();        
+        Stage stage = new Stage();
         stage.setTitle("Nuevo Libro");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(null);

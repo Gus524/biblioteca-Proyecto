@@ -27,4 +27,6 @@ public class NuevoLibroController {
         categoriaIconPlus.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.PLUS));
         categoriaIconMinus.setGraphic(GlyphsDude.createIcon(FontAwesomeIcon.MINUS));
     }
+
+    
 }
