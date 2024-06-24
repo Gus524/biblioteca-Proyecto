@@ -66,7 +66,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="SpnCantidad" editable="true" styleClass="transparent"/>
+                        <Spinner fx:id="spnCantidad" editable="true" styleClass="transparent"/>
                      </children>
                   </HBox>
                </children>
@@ -102,7 +102,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="tfLibro" prefWidth="220.0" promptText="Autor" styleClass="transparent">
+                        <TextField fx:id="tfAutor" prefWidth="220.0" promptText="Autor" styleClass="transparent">
                            <font>
                               <Font name="Thonburi" size="11.0" />
                            </font>
@@ -132,7 +132,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <TextArea fx:id="txtAreaAutor" prefHeight="200.0" prefWidth="200.0" promptText="Autores" styleClass="transparent">
+                        <TextArea fx:id="txtAreaAutor" prefHeight="200.0" prefWidth="200.0" promptText="Autores" styleClass="transparent" >
                            <font>
                               <Font name="Thonburi" size="11.0" />
                            </font>

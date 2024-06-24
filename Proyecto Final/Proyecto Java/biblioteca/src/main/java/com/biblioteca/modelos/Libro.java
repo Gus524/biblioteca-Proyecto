@@ -102,4 +102,8 @@ public class Libro implements ConvertirMapeo {
                             "WHERE lc.id_libro = l.id_libro) c) AS categorias " +
                             "FROM Libro l JOIN Editorial e ON e.id_editorial = l.id_editorial"));
     }
+
+    public Boolean agregarLibro() {
+        return cnn.ejecutar("INSERT INTO Libro (titulo, autores, categorias ) VALUES (?, ?, ?)", getTitulo(), getAutores(), getCategorias()) > 0;
+    }
 }
