@@ -111,7 +111,7 @@ public class LectoresAdminController {
     }
 
     @FXML
-    private void mostrarModal() throws IOException{
+    private void mostrarModal() throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biblioteca/vistas/modals/nuevoLector.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();        

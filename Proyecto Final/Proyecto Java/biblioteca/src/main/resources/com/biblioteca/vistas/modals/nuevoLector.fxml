@@ -91,15 +91,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <JFXButton fx:id="btnCancelar" onAction="#cancelar" styleClass="cancelar-button" text="Cancelar">
-                           <font>
-                              <Font name="Thonburi" size="12.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
                         <JFXButton fx:id="btnGuardar" onAction="#agregarLector" styleClass="guardar-button" text="Guardar">

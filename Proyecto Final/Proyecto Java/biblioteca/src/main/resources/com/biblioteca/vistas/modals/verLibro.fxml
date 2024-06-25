@@ -88,7 +88,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnEdicion" disable="true" editable="true"
+                        <Spinner fx:id="spnEdicion" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -103,7 +103,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnCantidad" disable="true" editable="true"
+                        <Spinner fx:id="spnCantidad" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -118,7 +118,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnPublicacion" disable="true" editable="true"
+                        <Spinner fx:id="spnPublicacion" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -137,23 +137,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <JFXButton fx:id="btnAgregar" onAction="#agregarEdicion" styleClass="guardar-button"
-                           text="Agregar Edición">
-                           <font>
-                              <Font name="Thonburi" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                     </children>
-                  </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
                      GridPane.columnIndex="1">
                      <children>
-                        <JFXButton fx:id="btnEditar" styleClass="editar-button" text="Editar">
+                        <JFXButton fx:id="btnEditar" onAction="#editarCampos" styleClass="editar-button" text="Editar">
                            <font>
                               <Font name="Thonburi" size="12.0" />
                            </font>

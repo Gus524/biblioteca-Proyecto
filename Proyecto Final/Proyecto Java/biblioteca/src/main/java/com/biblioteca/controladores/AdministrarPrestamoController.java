@@ -35,14 +35,24 @@ public class AdministrarPrestamoController {
         Prestamo p = new Prestamo();
         p.setId_prestamo_user(id_prestamo);
         p.setISBN(ISBN);
-        if(p.actualizarEstadoDevuelto()){
-            p.acutalizarCantidadEdicion();
-            ShowAlert.show("Estado actualizado", "El libro ha sido devuelto");
-            Stage modal = (Stage) tfLibro.getScene().getWindow();
-            modal.close();
-        }
-        else{
-            ShowAlert.show("Error al actualizar", "Ocurrió un error al actualizar el estado del libro");
+        try {
+            if (p.esDevuelto()) {
+                ShowAlert.show("Error", "El libro ya ha sido devuelto. No se puede devolver otra vez.");
+            } else if (p.esPrestado()) {
+                if (p.actualizarEstadoDevuelto()) {
+                    p.acutalizarCantidadEdicion();
+                    ShowAlert.show("Éxito", "El libro ha sido devuelto exitosamente.");
+                    Stage modal = (Stage) tfLibro.getScene().getWindow();
+                    modal.close();
+                } else {
+                    ShowAlert.show("Error al actualizar", "Ocurrió un error al actualizar el estado del libro.");
+                }
+            } else {
+                ShowAlert.show("Error", "El libro no está actualmente prestado.");
+            }
+        } catch (Exception e) {
+            ShowAlert.show("Error", "Ocurrió un error inesperado: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

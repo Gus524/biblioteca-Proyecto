@@ -53,8 +53,6 @@ public class CatalogoAdminController {
     @FXML
     private ObservableList<Edicion> libros;
 
-    Filtro f = new Filtro();
-
     @FXML
     public void initialize() {
         cargarTabla();
@@ -187,7 +185,8 @@ public class CatalogoAdminController {
     }
 
     private void cargarComboBox() {
-        cmbxAutor.getItems().addAll(Filtro.listaAutor);
-        cmbxCategoria.getItems().addAll(Filtro.listaCategoria);
+        Filtro f = new Filtro();
+        cmbxAutor.getItems().addAll(f.obtenerAutores());
+        cmbxCategoria.getItems().addAll(f.obtenerCategorias());
     }
 }

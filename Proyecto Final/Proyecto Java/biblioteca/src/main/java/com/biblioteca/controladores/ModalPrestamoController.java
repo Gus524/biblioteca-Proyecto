@@ -1,5 +1,6 @@
 package com.biblioteca.controladores;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +37,10 @@ public class ModalPrestamoController {
     private ComboBox<Edicion> cmbxLibro;
     @FXML
     private Label plusIcon;
-    @FXML Label addIcon;
-    @FXML Label removeIcon;
+    @FXML 
+    private Label addIcon;
+    @FXML 
+    private Label removeIcon;
     @FXML
     private DatePicker dpFecha;
     @FXML
@@ -95,15 +98,45 @@ public class ModalPrestamoController {
 
     @FXML
     private void agregarLibro(){
-        listaLibros.add(cmbxLibro.getSelectionModel().getSelectedItem());
-        cambiarLista();
+        try {
+            validarCamposLibro();
+            Edicion libroSeleccionado = cmbxLibro.getSelectionModel().getSelectedItem();
+            
+            if (libroSeleccionado.getDisponibles() > 0) {
+                listaLibros.add(libroSeleccionado);
+                cambiarLista();
+                libroSeleccionado.setDisponibles(libroSeleccionado.getDisponibles() - 1);
+            } else {
+                ShowAlert.show("Error", "Ya no hay libros disponibles de este título.");
+            }
+        } catch (Exception e) {
+            ShowAlert.show("Error", e.getMessage());
+        }
+    }
+
+    private void validarCamposLibro() throws Exception {
+        if (cmbxLibro.getSelectionModel().getSelectedItem() == null) {
+            throw new Exception("Debe seleccionar un libro.");
+        }
     }
 
     @FXML
     private void quitarLibro(){
-        listaLibros.remove(listaLibros.size() - 1);
-        cambiarLista();
+        try {
+            if (listaLibros.isEmpty()) {
+                ShowAlert.show("Error", "No hay libros para quitar.");
+                return;
+            }
+            
+            Edicion libroQuitado = listaLibros.remove(listaLibros.size() - 1);
+            libroQuitado.setDisponibles(libroQuitado.getDisponibles() + 1); 
+            
+            cambiarLista(); 
+        } catch (Exception e) {
+            ShowAlert.show("Error", e.getMessage());
+        }
     }
+    
     private void cambiarLista(){
         text = "Libros: \n";
         for(Edicion e : listaLibros){
@@ -115,22 +148,37 @@ public class ModalPrestamoController {
     @FXML
     private void agregarPrestamo(){
         Prestamo p = new Prestamo(); 
-        System.out.println(cmbxLector.getSelectionModel().getSelectedItem());
-        p.setId_user(cmbxLector.getSelectionModel().getSelectedItem().id_userProperty().getValue());
-        System.out.println(cmbxLector.getSelectionModel().getSelectedItem().id_userProperty().getValue());
-        try{
+        try {
+            validarCamposPrestamo();
+            p.setId_user(cmbxLector.getSelectionModel().getSelectedItem().id_userProperty().getValue());
             p.setId_prestamo(p.agregarPrestamo());
-            System.out.println(p.id_prestamoProperty().getValue());
             p.setFecha_devolucion(Fecha.convertirFormatoSQL(dpFecha.getEditor().getText()));
             for(Edicion e : listaLibros){
                 p.setISBN(e.ISBNProperty().getValue());
-                System.out.println(p.ISBNProperty().getValue());
                 if (p.agregarConcentrado())
                     p.quitarCantidadEdicion();
             }
-            ShowAlert.show("Prueba", "Si se pudo");
+            ShowAlert.show("Prueba", "Préstamo agregado exitosamente.");
         } catch (Exception e) {
-            ShowAlert.show("Error", "Valió verga carnal");
+            ShowAlert.show("Error", e.getMessage());
+        }
+    }
+
+    private void validarCamposPrestamo() throws Exception {
+        if (cmbxLector.getSelectionModel().getSelectedItem() == null || dpFecha.getValue() == null || listaLibros.isEmpty() ) {
+            throw new Exception("No se llenaron todos los campos.");
+        }
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaSeleccionada = dpFecha.getValue();
+
+        if (fechaSeleccionada.isBefore(fechaActual)) {
+            throw new Exception("La fecha de devolución no puede ser anterior a la fecha actual.");
+        }
+
+        LocalDate fechaLimite = fechaActual.plusDays(15); 
+
+        if (fechaSeleccionada.isAfter(fechaLimite)) {
+            throw new Exception("El préstamo no puede exceder los 15 días.");
         }
     }
 

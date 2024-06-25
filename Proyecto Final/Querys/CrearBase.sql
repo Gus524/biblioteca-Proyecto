@@ -29,7 +29,6 @@ CREATE TABLE Edicion (
     id_libro        INTEGER,
     publicacion     INTEGER NOT NULL,
     no_edicion      INTEGER NOT NULL,
-    precio          REAL NOT NULL,
     disponibles     INTEGER NOT NULL,
     FOREIGN KEY (id_libro) REFERENCES Libro(id_libro)
 );
@@ -84,20 +83,6 @@ CREATE TABLE Prestamo_Concentrado (
     FOREIGN KEY (id_estado) REFERENCES Estado(id_estado)
 );
 
-CREATE TABLE Venta (
-    id_venta        INTEGER PRIMARY KEY AUTOINCREMENT,
-    fecha_venta     TEXT DEFAULT CURRENT_TIMESTAMP,
-    costo_total     REAL NOT NULL
-);
-
-CREATE TABLE Venta_Detalle (
-    id_venta        INTEGER,
-    ISBN            INTEGER NOT NULL,
-    costo_parcial   REAL NOT NULL,
-    FOREIGN KEY (id_venta) REFERENCES Venta(id_venta),
-    FOREIGN KEY (ISBN) REFERENCES Edicion(ISBN)
-);
-
 CREATE TABLE Multa (
     id_multa            INTEGER PRIMARY KEY AUTOINCREMENT,
     id_user		        INTEGER,
@@ -120,6 +105,4 @@ SELECT * FROM Libro_Categoria;
 SELECT * FROM Estado;
 SELECT * FROM Prestamo;
 SELECT * FROM Prestamo_Concentrado;
-SELECT * FROM Venta;
-SELECT * FROM Venta_Detalle;
 SELECT * FROM Multa;

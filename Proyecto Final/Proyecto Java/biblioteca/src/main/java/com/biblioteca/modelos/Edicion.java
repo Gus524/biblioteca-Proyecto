@@ -17,7 +17,6 @@ public class Edicion implements ConvertirMapeo {
     private IntegerProperty publicacion;
     private IntegerProperty no_edicion;
     private IntegerProperty disponibles;
-    private DoubleProperty precio;
     private StringProperty editorial;
     private StringProperty autores;
     private StringProperty categorias;
@@ -28,7 +27,6 @@ public class Edicion implements ConvertirMapeo {
     public IntegerProperty publicacionProperty() { return publicacion; }
     public IntegerProperty no_edicionProperty() { return no_edicion; }
     public IntegerProperty disponiblesProperty() { return disponibles; }
-    public DoubleProperty precioProperty() { return precio; }
     public StringProperty editorialProperty() { return editorial; }
     public StringProperty autoresProperty() { return autores; }
     public StringProperty categoriasProperty() { return categorias; }
@@ -39,7 +37,6 @@ public class Edicion implements ConvertirMapeo {
     public int getPublicacion() { return publicacion.get(); }
     public int getNo_edicion()  { return no_edicion.get(); }
     public int getDisponibles() { return disponibles.get(); }
-    public double getPrecio()    { return precio.get(); }
     public String getEditorial() { return editorial.get(); }
     public String getAutores()    { return autores.get(); }
     public String getCategorias() { return categorias.get(); }
@@ -62,9 +59,6 @@ public class Edicion implements ConvertirMapeo {
     public void setDisponibles(int disponibles){ 
         this.disponibles.set(disponibles); 
     }
-    public void setPrecio(double precio){
-        this.precio.set(precio);
-    }
     public void setEditorial(String editorial){
         this.editorial.set(editorial); 
     }
@@ -82,7 +76,6 @@ public class Edicion implements ConvertirMapeo {
         this.publicacion = new SimpleIntegerProperty(0);
         this.no_edicion = new SimpleIntegerProperty(0);
         this.disponibles = new SimpleIntegerProperty(0);
-        this.precio = new SimpleDoubleProperty(0.0);
         this.editorial = new SimpleStringProperty("");
         this.autores = new SimpleStringProperty("");
         this.categorias = new SimpleStringProperty("");
@@ -95,7 +88,7 @@ public class Edicion implements ConvertirMapeo {
     }
     
     public Edicion(String titulo, Integer id_libro, Long ISBN, Integer publicacion,
-            Integer no_edicion, Integer disponibles, Double precio, String editorial, String autores,
+            Integer no_edicion, Integer disponibles, String editorial, String autores,
             String categorias) {
         this.titulo = new SimpleStringProperty(titulo);
         this.id_libro = new SimpleIntegerProperty(id_libro);
@@ -103,7 +96,6 @@ public class Edicion implements ConvertirMapeo {
         this.publicacion = new SimpleIntegerProperty(publicacion);
         this.no_edicion = new SimpleIntegerProperty(no_edicion);
         this.disponibles = new SimpleIntegerProperty(disponibles);
-        this.precio = new SimpleDoubleProperty(precio);
         this.editorial = new SimpleStringProperty(editorial);
         this.autores = new SimpleStringProperty(autores);
         this.categorias = new SimpleStringProperty(categorias);
@@ -126,7 +118,6 @@ public class Edicion implements ConvertirMapeo {
             (Integer) map.get("publicacion"),
             (Integer) map.get("no_edicion"),
             (Integer) map.get("disponibles"),
-            (Double) map.get("precio"),
             (String) map.get("nom_editorial"),
             (String) map.get("autores"),
             (String) map.get("categorias")
@@ -163,23 +154,33 @@ public class Edicion implements ConvertirMapeo {
                                             getISBN()));
     }
 
+    public Boolean comprobarExisteISBNyNumero(){
+        return (cnn.comprobar("SELECT * FROM Edicion WHERE ISBN = ? AND no_edicion = ?", 
+                getISBN(), 
+                getNo_edicion()) > 0);
+    }
     public Boolean agregarEdicion(){
         return (cnn.ejecutar("INSERT INTO Edicion "
-                   + "(no_edicion, id_libro, ISBN, publicacion, precio, disponibles) VALUES "
-                   + "(?, ?, ?, ?, ?, ?)", 
+                   + "(no_edicion, id_libro, ISBN, publicacion, disponibles) VALUES "
+                   + "(?, ?, ?, ?, ?)", 
                    getNo_edicion(), 
                    getId_libro(), 
                    getISBN(), 
                    getPublicacion(), 
-                   getPrecio(), 
                    getDisponibles()) > 0);
+    }
+
+    public int agregarLibro(){
+        return (cnn.getKey("INSERT INTO Libro " + 
+                            "(titulo, id_editorial) " + 
+                            "VALUES (?, 1)" , 
+                            getTitulo()));
     }
 
     public Boolean actualizarEdicion(){
         return (cnn.ejecutar("UPDATE Edicion SET no_edicion = ?, publicacion = ?, precio = ?, disponibles = ? WHERE ISBN = ?", 
                             getNo_edicion(),
                             getPublicacion(), 
-                            getPrecio(), 
                             getDisponibles(), 
                             getISBN()) > 0);
     }
@@ -210,10 +211,10 @@ public class Edicion implements ConvertirMapeo {
         return (cnn.comprobar("SELECT * FROM Edicion WHERE ISBN = ?", 
                 getISBN()) > 0);
     }
-
-    public Boolean actualizarPrecio(){
-        return (cnn.ejecutar("UPDATE Edicion SET precio = ? WHERE ISBN = ?", 
-                getPrecio(), 
+    
+    public Boolean comprobarNumeroEdicion(){
+        return (cnn.comprobar("SELECT * FROM Edicion WHERE no_edicion = ? AND ISBN = ?", 
+                getNo_edicion(), 
                 getISBN()) > 0);
     }
 

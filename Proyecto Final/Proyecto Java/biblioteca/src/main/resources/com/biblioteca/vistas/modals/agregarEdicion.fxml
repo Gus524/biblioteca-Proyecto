@@ -88,7 +88,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnEdicion" disable="true" editable="true"
+                        <Spinner fx:id="spnEdicion" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -103,7 +103,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnCantidad" disable="true" editable="true"
+                        <Spinner fx:id="spnCantidad" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -118,7 +118,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Spinner fx:id="spnPublicacion" disable="true" editable="true"
+                        <Spinner fx:id="spnPublicacion" disable="true" editable="false"
                            styleClass="transparent" />
                      </children>
                   </HBox>
@@ -143,7 +143,7 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                      <children>
-                        <JFXButton fx:id="btnGuardar" styleClass="guardar-button"
+                        <JFXButton fx:id="btnGuardar" onAction="#guardarCambios" styleClass="guardar-button"
                            text="Agregar Edicion">
                            <font>
                               <Font name="Thonburi" size="12.0" />

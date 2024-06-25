@@ -147,6 +147,30 @@ public class Prestamo implements ConvertirMapeo{
                                             "e.id_estado = pc.id_estado WHERE p.id_prestamo = ?", 
                                             getId_prestamo()));
     }
+    public boolean esDevuelto() {
+        List<HashMap<String, Object>> resultado = cnn.consultar(
+            "SELECT id_estado FROM Prestamo_Concentrado WHERE id_prestamo_user = ? AND ISBN = ?",
+            getId_prestamo_user(), getISBN()
+        );
+    if (!resultado.isEmpty()) {
+        int idEstado = (Integer) resultado.get(0).get("id_estado");
+        return idEstado == 2; 
+    }
+    return true; 
+}
+
+public boolean esPrestado() {
+    List<HashMap<String, Object>> resultado = cnn.consultar(
+        "SELECT id_estado FROM Prestamo_Concentrado WHERE id_prestamo_user = ? AND ISBN = ?",
+        getId_prestamo_user(), getISBN()
+    );
+
+    if (!resultado.isEmpty()) {
+        int idEstado = (Integer) resultado.get(0).get("id_estado");
+        return idEstado == 1; 
+    }
+    return true; 
+}
 
     public List<Prestamo> obtenerAtrasos(){
         return convertirMapeo(cnn.consultar("SELECT * FROM Prestamo_Concentrado pc JOIN Prestamo p ON "+

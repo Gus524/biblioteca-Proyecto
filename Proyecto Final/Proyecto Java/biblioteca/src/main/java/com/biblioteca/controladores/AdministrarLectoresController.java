@@ -38,17 +38,45 @@ public class AdministrarLectoresController {
 
     @FXML
     private void actualizarLector(){
-        Usuario u = new Usuario();
-        u.setNom_user(tfNombre.getText());
-        u.setAp_user(tfApellido.getText());
-        u.setCorreo(tfCorreo.getText());
-        u.setId_user(id_user);
-        if(u.actualizarUsuario()){
-            ShowAlert.show("Actualizado correctamente", "Se actualizaron correctamente los datos");
-            Stage modal = (Stage) tfNombre.getScene().getWindow();
-            modal.close();
-        }else{
-            ShowAlert.show("Error al actualizar", "Ocurrió un error al actualizar los datos");
+        String nombre = tfNombre.getText().trim();
+        String apellido = tfApellido.getText().trim();
+        String correo = tfCorreo.getText().trim();
+
+        try {
+            validarCampos(nombre, apellido, correo);
+
+            Usuario u = new Usuario();
+            u.setNom_user(nombre);
+            u.setAp_user(apellido);
+            u.setCorreo(correo);
+            u.setId_user(id_user);
+
+            if (u.actualizarUsuario()) {
+                ShowAlert.show("Actualizado correctamente", "Se actualizaron correctamente los datos");
+                Stage modal = (Stage) tfNombre.getScene().getWindow();
+                modal.close();
+            } else {
+                ShowAlert.show("Error al actualizar", "Ocurrió un error al actualizar los datos");
+            }
+        } catch (Exception e) {
+            ShowAlert.show("Error de Validación", e.getMessage());
+        }
+    }
+
+    private void validarCampos(String nombre, String apellido, String correo) throws Exception {
+        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()) {
+            throw new Exception("Por favor ingrese todos los campos.");
+        }
+
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            throw new Exception("El nombre solo puede contener letras y acentos.");
+        }
+        if (!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            throw new Exception("El nombre solo puede contener letras y acentos.");
+        }
+
+        if (!correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z.-]+\\.[a-z]{2,}$")) {
+            throw new Exception("El correo electrónico no es válido.");
         }
     }
 }

@@ -78,6 +78,11 @@ public class Usuario implements ConvertirMapeo{
         return usuarios;
     }
 
+    public Boolean guardarUsuario(){
+        return (cnn.ejecutar("INSERT INTO Usuario(nom_user, ap_user, email) VALUES(?, ?, ?)",
+                getNom_user(), getAp_user(), getCorreo()) > 0);
+    }
+
     public Boolean comprobarCorreo(){
         return (cnn.comprobar("SELECT * FROM Usuario WHERE email = ?",
                 getCorreo()) > 0);
